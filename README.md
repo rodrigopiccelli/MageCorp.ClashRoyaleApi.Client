@@ -19,8 +19,8 @@ Client library (C# wrapper) written in .NET 7.0 that provides an easy way to int
 2. [Usage](#usage)
    - [Standalone Initialization](#standalone-initialization)
      - [Clash Royale Api](#clashroyaleapistandalone)
-   - [Microsoft.Extensions.DependencyInjection Initialization](#microsoftextensionsdependencyinjection-initialization)
-     - [Clash Royale Api](#clashroyaleapi)
+   - [Microsoft.Extensions.DependencyInjection Initialization](#di-initialization)
+     - [Clash Royale Api](#clash-royale-api)
      - [Using Configuration](#using-configuration)
 3. [License](#license)
 
@@ -57,7 +57,7 @@ var clansService = clashRoyaleApiClient.ClansService;
 ```
 `clashRoyaleApiClient` contains all necessary clients.
 
-### <a name="microsoftextensionsdependencyinjection-initialization"></a> Microsoft.Extensions.DependencyInjection Initialization
+### <a name="di-initialization"></a> Microsoft.Extensions.DependencyInjection Initialization
 
 First, you need to install `Microsoft.Extensions.DependencyInjection` NuGet package as follows
 
@@ -65,7 +65,7 @@ First, you need to install `Microsoft.Extensions.DependencyInjection` NuGet pack
 dotnet add package Microsoft.Extensions.DependencyInjection
 ```
 
-#### <a name="clashroyaleapi"></a> Clash Royale Api
+#### <a name="clash-royale-api"></a> Clash Royale Api
 
 Register necessary dependencies to `ServiceCollection` as follows
 
