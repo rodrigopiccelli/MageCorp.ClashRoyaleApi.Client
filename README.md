@@ -30,7 +30,7 @@ Client library (C# wrapper) written in .NET 7.0 that provides an easy way to int
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | 
 | Clash Royale API Client               | <img src="https://raw.githubusercontent.com/rodrigopiccelli/MageCorp.ClashRoyaleApi.Client/master/icon.png" width="150" height="150" title="Github Logo"> | [![NuGet](https://img.shields.io/nuget/v/MageCorp.ClashRoyaleApi.Client.svg)](https://www.nuget.org/packages/MageCorp.ClashRoyaleApi.Client/) |
 
-Following commands can be used to install both Pekka.ClashRoyaleApi.Client and Pekka.RoyaleApi.Client, run the following command in the Package Manager Console
+Following commands can be used to install MageCorp.ClashRoyaleApi.Client, run the following command in the Package Manager Console
 
 ```
 NuGet\Install-Package MageCorp.ClashRoyaleApi.Client
