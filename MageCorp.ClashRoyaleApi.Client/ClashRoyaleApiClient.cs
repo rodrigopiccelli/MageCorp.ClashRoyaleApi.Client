@@ -3,6 +3,9 @@ using MageCorp.ClashRoyaleApi.Client.Interfaces;
 
 namespace MageCorp.ClashRoyaleApi.Client
 {
+    /// <summary>
+    /// The Clash Royale API Client
+    /// </summary>
     public class ClashRoyaleApiClient
     {
         private static HttpClient? httpClient;
@@ -27,17 +30,43 @@ namespace MageCorp.ClashRoyaleApi.Client
             TournamentsService = new TournamentsService(httpClient);
         }
 
+        /// <summary>
+        /// Creates an instance of ClashRoyaleApiClient
+        /// </summary>
+        /// <param name="apiOptions">Instance of ApiOptions</param>
+        /// <returns></returns>
         public static ClashRoyaleApiClient Create(ApiOptions apiOptions)
         {
             return new ClashRoyaleApiClient(apiOptions);
         }
 
+        /// <summary>
+        /// Access card information
+        /// </summary>
         public ICardsService CardsService { get; internal set; }
+        /// <summary>
+        /// Access challenge information
+        /// </summary>
         public IChallengesService ChallengesService { get; internal set; }
+        /// <summary>
+        /// Access clan specific information
+        /// </summary>
         public IClansService ClansService { get; internal set; }
+        /// <summary>
+        /// Access global tournaments information
+        /// </summary>
         public IGlobalTournamentsService GlobalTournamentsService { get; internal set; }
+        /// <summary>
+        /// Access global and local rankings
+        /// </summary>
         public ILocationsService LocationsService { get; internal set; }
+        /// <summary>
+        /// Access player specific information
+        /// </summary>
         public IPlayersService PlayersService { get; internal set; }
+        /// <summary>
+        /// Access tournament information
+        /// </summary>
         public ITournamentsService TournamentsService { get; internal set; }
     }
 }

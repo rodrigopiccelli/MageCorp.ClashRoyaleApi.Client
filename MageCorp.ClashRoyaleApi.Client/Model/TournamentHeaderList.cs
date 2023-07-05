@@ -2,4 +2,6 @@
 
 namespace MageCorp.ClashRoyaleApi.Client.Model;
 
-public  class TournamentHeaderList : ApiPagedResponse<TournamentHeader> { }
+/// <summary>
+/// </summary>
+public class TournamentHeaderList : ApiPagedResponse<TournamentHeader> { }

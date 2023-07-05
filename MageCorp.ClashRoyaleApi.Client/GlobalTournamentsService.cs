@@ -10,6 +10,6 @@ internal class GlobalTournamentsService : ApiClient, IGlobalTournamentsService
 
     public GlobalTournamentsService(IHttpClientFactory httpClientFactory) : base(httpClientFactory) { }
 
-    public async Task<LadderTournamentList> ListGlobalTournamentsAsync() =>
+    public async Task<LadderTournamentList?> ListGlobalTournamentsAsync() =>
         await GetAsync<LadderTournamentList>($"globaltournaments");
 }

@@ -39,16 +39,19 @@ internal abstract class ApiClient
             
             if(parameters != null && parameters.Count > 0)
                 requestUri = $"{requestUri}?{parameters}";
-            
-            var response = await httpClient.GetAsync(requestUri);
-            var message = await response.Content.ReadAsStringAsync();
 
-            result.HttpStatusCode = response.StatusCode;
+            if (httpClient != null)
+            {
+                var response = await httpClient.GetAsync(requestUri);
+                var message = await response.Content.ReadAsStringAsync();
 
-            if (result.HttpStatusCode == HttpStatusCode.OK)
-                result = JsonConvert.DeserializeObject<T>(message);
-            else
-                result.Error = JsonConvert.DeserializeObject<ClientError>(message);
+                result.HttpStatusCode = response.StatusCode;
+
+                if (result.HttpStatusCode == HttpStatusCode.OK)
+                    result = JsonConvert.DeserializeObject<T>(message);
+                else
+                    result.Error = JsonConvert.DeserializeObject<ClientError>(message);
+            }
 
             return result;
         }

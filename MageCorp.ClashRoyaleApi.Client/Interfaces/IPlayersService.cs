@@ -12,17 +12,17 @@ public interface IPlayersService
     /// </summary>
     /// <param name="playerTag">Tag of the player.</param>
     /// <returns></returns>
-    Task<Player> GetPlayerAsync(string playerTag);
+    Task<Player?> GetPlayerAsync(string playerTag);
     /// <summary>
     /// Get list of reward chests that the player will receive next in the game.
     /// </summary>
     /// <param name="playerTag">Tag of the player.</param>
     /// <returns></returns>
-    Task<UpcomingChests> GetUpcomingChestsAsync(string playerTag);
+    Task<UpcomingChests?> GetUpcomingChestsAsync(string playerTag);
     /// <summary>
     /// Get list of recent battles for a player
     /// </summary>
     /// <param name="playerTag">Tag of the player.</param>
     /// <returns></returns>
-    Task<BattleList> ListBatlleLogAsync(string playerTag);
+    Task<BattleList?> ListBatlleLogAsync(string playerTag);
 }

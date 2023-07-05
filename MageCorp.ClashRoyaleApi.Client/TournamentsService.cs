@@ -12,10 +12,10 @@ internal class TournamentsService : ApiClient, ITournamentsService
 
     public TournamentsService(IHttpClientFactory httpClientFactory) : base(httpClientFactory) { }
 
-    public async Task<TournamentHeaderList> SearchAsync(string? name, int? limit = null, string? after = null, string? before = null) =>
+    public async Task<TournamentHeaderList?> SearchAsync(string? name, int? limit = null, string? after = null, string? before = null) =>
         await GetAsync<TournamentHeaderList>($"tournaments",
             new NameValueCollection { { "name", name }, { "limit", limit?.ToString() }, { "after", after }, { "before", before } });
 
-    public async Task<Tournament> GetTournamentAsync(string tournamentTag) =>
+    public async Task<Tournament?> GetTournamentAsync(string tournamentTag) =>
         await GetAsync<Tournament>($"tournaments/{HttpUtility.UrlEncode(tournamentTag)}");
 }

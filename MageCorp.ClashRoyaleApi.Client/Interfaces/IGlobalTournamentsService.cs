@@ -2,11 +2,13 @@
 
 namespace MageCorp.ClashRoyaleApi.Client.Interfaces;
 
+/// <summary>
+/// </summary>
 public interface IGlobalTournamentsService
 {
     /// <summary>
     /// Get list of global tournaments
     /// </summary>
     /// <returns></returns>
-    Task<LadderTournamentList> ListGlobalTournamentsAsync();
+    Task<LadderTournamentList?> ListGlobalTournamentsAsync();
 }
