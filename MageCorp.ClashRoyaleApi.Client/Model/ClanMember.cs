@@ -1,4 +1,6 @@
-﻿using MageCorp.ClashRoyaleApi.Client.Model.Enum;
+﻿using MageCorp.ClashRoyaleApi.Client.Converter;
+using MageCorp.ClashRoyaleApi.Client.Model.Enum;
+using Newtonsoft.Json;
 
 namespace MageCorp.ClashRoyaleApi.Client.Model;
 
@@ -14,7 +16,8 @@ public class ClanMember
     public int ClanChestPoints { get; set; }
     /// <summary>
     /// </summary>
-    public string? LastSeen { get; set; }
+    [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
+    public DateTime? LastSeen { get; set; }
     /// <summary>
     /// </summary>
     public string? Tag { get; set; }
