@@ -9,7 +9,7 @@ public class Clan: ApiResponse
 {
     /// <summary>
     /// </summary>
-    public ClanMemberList? MemberList { get; set; }
+    public List<ClanMember>? MemberList { get; set; }
     /// <summary>
     /// </summary>
     public string? Tag { get; set; }
