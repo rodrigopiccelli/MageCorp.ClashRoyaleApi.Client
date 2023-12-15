@@ -1,9 +1,9 @@
 ﻿using MageCorp.ClashRoyaleApi.Client.Model;
 using MageCorp.ClashRoyaleApi.Client.Interfaces;
-using Newtonsoft.Json;
 using System.Net;
 using System.Collections.Specialized;
 using MageCorp.ClashRoyaleApi.Client.Extensions;
+using System.Text.Json;
 
 namespace MageCorp.ClashRoyaleApi.Client.Abstract;
 
@@ -36,8 +36,8 @@ internal abstract class ApiClient
         try
         {
             parameters = parameters?.ConvertToHttpValueColletion();
-            
-            if(parameters != null && parameters.Count > 0)
+
+            if (parameters != null && parameters.Count > 0)
                 requestUri = $"{requestUri}?{parameters}";
 
             if (httpClient != null)
@@ -45,12 +45,18 @@ internal abstract class ApiClient
                 var response = await httpClient.GetAsync(requestUri);
                 var message = await response.Content.ReadAsStringAsync();
 
-                result.HttpStatusCode = response.StatusCode;
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                };
 
-                if (result.HttpStatusCode == HttpStatusCode.OK)
-                    result = JsonConvert.DeserializeObject<T>(message);
+                if (response.StatusCode == HttpStatusCode.OK)
+                    result = JsonSerializer.Deserialize<T>(message, options);
                 else
-                    result.Error = JsonConvert.DeserializeObject<ClientError>(message);
+                    result.Error = JsonSerializer.Deserialize<ClientError>(message, options);
+
+                result!.HttpStatusCode = response.StatusCode;
+
             }
 
             return result;

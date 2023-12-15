@@ -1,4 +1,5 @@
 ﻿using MageCorp.ClashRoyaleApi.Client.Model.Enum;
+using System.Text.Json.Serialization;
 
 namespace MageCorp.ClashRoyaleApi.Client.Model;
 
@@ -8,8 +9,10 @@ public class RegisterMatchRequest
 {
     /// <summary>
     /// </summary>
+    [JsonInclude]
     public List<string>? PlayerTags { get; internal set; }
     /// <summary>
     /// </summary>
+    [JsonInclude]
     public GameModeEnum GameMode { get; internal set; }
 }

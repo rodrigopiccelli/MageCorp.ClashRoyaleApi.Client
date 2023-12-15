@@ -6,7 +6,7 @@ Client library (C# wrapper) written in .NET 8.0 that provides an easy way to int
 | Clash Royale API Client | [![NuGet](https://img.shields.io/nuget/v/MageCorp.ClashRoyaleApi.Client.svg)](https://www.nuget.org/packages/MageCorp.ClashRoyaleApi.Client/) |
 
 ## Supported Platforms
-- .Net 7.0; .Net 8.0
+- .Net 8.0
 
 ## Features
 
