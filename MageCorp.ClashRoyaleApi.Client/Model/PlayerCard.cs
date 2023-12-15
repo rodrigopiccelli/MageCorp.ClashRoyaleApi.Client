@@ -6,20 +6,14 @@ public class PlayerCard : Card
 {
     /// <summary>
     /// </summary>
-    public int Count { get; set; }
+    public int Level { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Level { get; set; }
+    public int StarLevel { get; internal set; }
     /// <summary>
     /// </summary>
-    public int StarLevel { get; set; }
+    public int EvolutionLevel { get; internal set; }
     /// <summary>
     /// </summary>
-    public bool Used { get; set; }
-    /// <summary>
-    /// </summary>
-    public int EvolutionLevel { get; set; }
-    /// <summary>
-    /// </summary>
-    public int MaxEvolutionLevel { get; set; }
+    public int Count { get; internal set; }
 }

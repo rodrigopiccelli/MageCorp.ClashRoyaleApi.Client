@@ -8,17 +8,17 @@ public class Location : ApiResponse
 {
     /// <summary>
     /// </summary>
-    public string? LocalizedName { get; set; }
+    public string? LocalizedName { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Id { get; set; }
+    public int Id { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public bool IsCountry { get; set; }
+    public bool IsCountry { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? CountryCode { get; set; }
+    public string? CountryCode { get; internal set; }
 }

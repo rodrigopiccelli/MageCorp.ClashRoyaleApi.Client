@@ -6,22 +6,22 @@ public class PlayerAchievementBadge
 {
     /// <summary>
     /// </summary>
-    public IconUrls? IconUrls { get; set; }
+    public IconUrls? IconUrls { get; internal set; }
     /// <summary>
     /// </summary>
-    public int MaxLevel { get; set; }
+    public int MaxLevel { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Progress { get; set; }
+    public int Progress { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Level { get; set; }
+    public int Level { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Target { get; set; }
+    public int Target { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
 }
 
 

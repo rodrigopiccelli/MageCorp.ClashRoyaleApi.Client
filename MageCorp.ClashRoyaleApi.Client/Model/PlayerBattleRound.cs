@@ -6,17 +6,17 @@ public class PlayerBattleRound
 {
     /// <summary>
     /// </summary>
-    public PlayerCardList? Cards { get; set; }
+    public PlayerCardList? Cards { get; internal set; }
     /// <summary>
     /// </summary>
-    public float ElixirLeaked { get; set; }
+    public float ElixirLeaked { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Crowns { get; set; }
+    public int Crowns { get; internal set; }
     /// <summary>
     /// </summary>
-    public int KingTowerHitPoints { get; set; }
+    public int KingTowerHitPoints { get; internal set; }
     /// <summary>
     /// </summary>
-    public List<int>? PrincessTowersHitPoints { get; set; }
+    public List<int>? PrincessTowersHitPoints { get; internal set; }
 }

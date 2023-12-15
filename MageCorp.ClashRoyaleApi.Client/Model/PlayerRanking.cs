@@ -6,26 +6,26 @@ public class PlayerRanking
 {
     /// <summary>
     /// </summary>
-    public PlayerRankingClan? Clan { get; set; }
+    public PlayerRankingClan? Clan { get; internal set; }
     /// <summary>
     /// </summary>
-    public Arena? Arena { get; set; }
+    public Arena? Arena { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ExpLevel { get; set; }
+    public int ExpLevel { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Rank { get; set; }
+    public int Rank { get; internal set; }
     /// <summary>
     /// </summary>
-    public int PreviousRank { get; set; }
+    public int PreviousRank { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Trophies { get; set; }
+    public int Trophies { get; internal set; }
 }

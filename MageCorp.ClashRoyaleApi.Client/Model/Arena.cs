@@ -6,11 +6,11 @@ public class Arena
 {
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Id { get; set; }
+    public int Id { get; internal set; }
     /// <summary>
     /// </summary>
-    public IconUrls? IconUrls { get; set; }
+    public IconUrls? IconUrls { get; internal set; }
 }

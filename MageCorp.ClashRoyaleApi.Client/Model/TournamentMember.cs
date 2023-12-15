@@ -6,20 +6,20 @@ public class TournamentMember
 {
     /// <summary>
     /// </summary>
-    public PlayerClan? Clan { get; set; }
+    public PlayerClan? Clan { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Rank { get; set; }
+    public int Rank { get; internal set; }
     /// <summary>
     /// </summary>
-    public int PreviousRank { get; set; }
+    public int PreviousRank { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Score { get; set; }
+    public int Score { get; internal set; }
 }

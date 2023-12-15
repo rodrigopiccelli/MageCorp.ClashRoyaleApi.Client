@@ -24,6 +24,6 @@ public enum RarityEnum
     Legendary,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "HERO")]
-    Hero
+    [EnumMember(Value = "CHAMPION")]
+    Champion
 }

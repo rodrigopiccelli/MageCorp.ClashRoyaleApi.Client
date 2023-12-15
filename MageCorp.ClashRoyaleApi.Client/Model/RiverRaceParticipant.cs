@@ -6,26 +6,26 @@ public class RiverRaceParticipant
 {
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Fame { get; set; }
+    public int Fame { get; internal set; }
     /// <summary>
     /// </summary>
-    public int RepairPoints { get; set; }
+    public int RepairPoints { get; internal set; }
     /// <summary>
     /// </summary>
-    public int BoatAttacks { get; set; }
+    public int BoatAttacks { get; internal set; }
     /// <summary>
     /// </summary>
-    public int DecksUsed { get; set; }
+    public int DecksUsed { get; internal set; }
     /// <summary>
     /// </summary>
-    public int DecksUsedToday { get; set; }
+    public int DecksUsedToday { get; internal set; }
     /// <summary>
     /// </summary>
-    public int PeriodPoints { get; set; }
+    public int PeriodPoints { get; internal set; }
 }

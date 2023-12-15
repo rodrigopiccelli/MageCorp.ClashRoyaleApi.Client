@@ -6,5 +6,5 @@ public class PeriodLogEntryClan
 {
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public string? Tag { get; internal set; }
 }

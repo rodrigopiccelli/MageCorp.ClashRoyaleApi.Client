@@ -6,11 +6,11 @@ public class Chest
 {
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Index { get; set; }
+    public int Index { get; internal set; }
     /// <summary>
     /// </summary>
-    public IconUrls? IconUrls { get; set; }
+    public IconUrls? IconUrls { get; internal set; }
 }

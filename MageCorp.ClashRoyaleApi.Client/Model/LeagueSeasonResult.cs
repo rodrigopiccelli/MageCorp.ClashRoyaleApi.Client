@@ -6,14 +6,14 @@ public class LeagueSeasonResult
 {
     /// <summary>
     /// </summary>
-    public int Trophies { get; set; }
+    public int Trophies { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Rank { get; set; }
+    public int Rank { get; internal set; }
     /// <summary>
     /// </summary>
-    public int BestTrophies { get; set; }
+    public int BestTrophies { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Id { get; set; }
+    public string? Id { get; internal set; }
 }

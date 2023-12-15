@@ -1,16 +1,15 @@
 ﻿namespace MageCorp.ClashRoyaleApi.Client.Model;
-
 /// <summary>
 /// </summary>
-public class RiverRaceStanding
+public class PathOfLegendSeasonResult
 {
     /// <summary>
     /// </summary>
-    public int Rank { get; internal set; }
+    public int Trophies { get; internal set; }
     /// <summary>
     /// </summary>
-    public int TrophyChange { get; internal set; }
+    public int LeagueNumber { get; internal set; }
     /// <summary>
     /// </summary>
-    public RiverRaceClan? Clan { get; internal set; }
+    public int? Rank { get; internal set; }
 }

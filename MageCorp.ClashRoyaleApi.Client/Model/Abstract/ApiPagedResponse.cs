@@ -6,9 +6,9 @@ public abstract class ApiPagedResponse<T> : ApiResponse
 {
     /// <summary>
     /// </summary>
-    public List<T>? Items { get; set; }
+    public List<T>? Items { get; internal set; }
     /// <summary>
     /// </summary>
-    public Paging? Paging { get; set; }
+    public Paging? Paging { get; internal set; }
 
 }

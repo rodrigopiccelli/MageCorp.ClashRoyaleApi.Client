@@ -6,5 +6,5 @@ public class VerifyTokenRequest
 {
     /// <summary>
     /// </summary>
-    public string? Token { get; set; }
+    public string? Token { get; internal set; }
 }

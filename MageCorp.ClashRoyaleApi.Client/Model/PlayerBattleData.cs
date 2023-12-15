@@ -6,35 +6,41 @@ public class PlayerBattleData
 {
     /// <summary>
     /// </summary>
-    public int Crowns { get; set; }
+    public int Crowns { get; internal set; }
     /// <summary>
     /// </summary>
-    public List<int>? PrincessTowersHitPoints { get; set; }
+    public List<int>? PrincessTowersHitPoints { get; internal set; }
     /// <summary>
     /// </summary>
-    public PlayerClan? Clan { get; set; }
+    public PlayerClan? Clan { get; internal set; }
     /// <summary>
     /// </summary>
-    public PlayerCardList? Cards { get; set; }
+    public PlayerCardList? Cards { get; internal set; }
     /// <summary>
     /// </summary>
-    public float ElixirLeaked { get; set; }
+    public PlayerCardList? SupportCards { get; internal set; }
     /// <summary>
     /// </summary>
-    public PlayerBattleRoundList? Rounds { get; set; }
+    public int? GlobalRank { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public float ElixirLeaked { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public PlayerBattleRoundList? Rounds { get; internal set; }
     /// <summary>
     /// </summary>
-    public int StartingTrophies { get; set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
-    public int TrophyChange { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public int KingTowerHitPoin { get; set; }
+    public int StartingTrophies { get; internal set; }
+    /// <summary>
+    /// </summary>
+    public int TrophyChange { get; internal set; }
+    /// <summary>
+    /// </summary>
+    public int KingTowerHitPoints { get; internal set; }
 }

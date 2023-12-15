@@ -6,8 +6,8 @@ public class ClanWarStanding
 {
     /// <summary>
     /// </summary>
-    public int TrophyChange { get; set; }
+    public int TrophyChange { get; internal set; }
     /// <summary>
     /// </summary>
-    public ClanWarClan? Clan { get; set; }   
+    public ClanWarClan? Clan { get; internal set; }   
 }

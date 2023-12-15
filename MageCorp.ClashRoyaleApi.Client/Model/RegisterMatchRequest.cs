@@ -8,8 +8,8 @@ public class RegisterMatchRequest
 {
     /// <summary>
     /// </summary>
-    public List<string>? PlayerTags { get; set; }
+    public List<string>? PlayerTags { get; internal set; }
     /// <summary>
     /// </summary>
-    public GameModeEnum GameMode { get; set; }
+    public GameModeEnum GameMode { get; internal set; }
 }

@@ -11,31 +11,31 @@ public class CurrentRiverRace : ApiResponse
 {
     /// <summary>
     /// </summary>
-    public CurrentRiverRaceStateEnum State { get; set; }
+    public CurrentRiverRaceStateEnum State { get; internal set; }
     /// <summary>
     /// </summary>
-    public RiverRaceClan? Clan { get; set; }
+    public RiverRaceClan? Clan { get; internal set; }
     /// <summary>
     /// </summary>
-    public RiverRaceClanList? Clans { get; set; }
-    /// <summary>
-    /// </summary>
-    [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? CollectionEndTime { get; set; }
+    public RiverRaceClanList? Clans { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? WarEndTime { get; set; }
+    public DateTime? CollectionEndTime { get; internal set; }
     /// <summary>
     /// </summary>
-    public int SectionIndex { get; set; }
+    [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
+    public DateTime? WarEndTime { get; internal set; }
     /// <summary>
     /// </summary>
-    public int PeriodIndex { get; set; }
+    public int SectionIndex { get; internal set; }
     /// <summary>
     /// </summary>
-    public PeriodTypeEnum PeriodType { get; set; }
+    public int PeriodIndex { get; internal set; }
     /// <summary>
     /// </summary>
-    public PeriodLogList? PeriodLogs { get; set; }
+    public PeriodTypeEnum PeriodType { get; internal set; }
+    /// <summary>
+    /// </summary>
+    public PeriodLogList? PeriodLogs { get; internal set; }
 }

@@ -6,11 +6,11 @@ public class Version
 {
     /// <summary>
     /// </summary>
-    public int Build { get; set; }
+    public int Build { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Major { get; set; }
+    public int Major { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Content { get; set; }
+    public int Content { get; internal set; }
 }

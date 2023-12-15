@@ -6,5 +6,5 @@ public class CancelMatchResponse
 {
     /// <summary>
     /// </summary>
-    public bool Success { get; set; }
+    public bool Success { get; internal set; }
 }

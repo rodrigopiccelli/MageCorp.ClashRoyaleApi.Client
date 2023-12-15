@@ -9,27 +9,27 @@ public class RiverRaceClan
 {
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ClanScore { get; set; }
+    public int ClanScore { get; internal set; }
     /// <summary>
     /// </summary>
-    public int BadgeId { get; set; }
+    public int BadgeId { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Fame { get; set; }
+    public int Fame { get; internal set; }
     /// <summary>
     /// </summary>
-    public int RepairPoints { get; set; }
+    public int RepairPoints { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? FinishTime { get; set; }
+    public DateTime? FinishTime { get; internal set; }
     /// <summary>
     /// </summary>
-    public RiverRaceParticipantList? Participants { get; set; }
+    public RiverRaceParticipantList? Participants { get; internal set; }
 }

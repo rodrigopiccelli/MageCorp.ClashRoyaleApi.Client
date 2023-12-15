@@ -6,11 +6,11 @@ public class IconUrls
 {
     /// <summary>
     /// </summary>
-    public Uri? Large { get; set; }
+    public Uri? Large { get; internal set; }
     /// <summary>
     /// </summary>
-    public Uri? Medium { get; set; }
+    public Uri? Medium { get; internal set; }
     /// <summary>
     /// </summary>
-    public Uri? EvolutionMedium { get; set; }
+    public Uri? EvolutionMedium { get; internal set; }
 }

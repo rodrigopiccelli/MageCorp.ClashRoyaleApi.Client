@@ -6,8 +6,8 @@ public class Cursors
 {
     /// <summary>
     /// </summary>
-    public string? After { get; set; }
+    public string? After { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Before { get; set; }
+    public string? Before { get; internal set; }
 }

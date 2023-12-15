@@ -9,53 +9,53 @@ public class Clan: ApiResponse
 {
     /// <summary>
     /// </summary>
-    public List<ClanMember>? MemberList { get; set; }
+    public List<ClanMember>? MemberList { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
-    public ClanChestStatusEnum ClanChestStatus { get; set; }
+    public ClanChestStatusEnum ClanChestStatus { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ClanChestLevel { get; set; }
+    public int ClanChestLevel { get; internal set; }
     /// <summary>
     /// </summary>
-    public int RequiredTrophies { get; set; }
+    public int RequiredTrophies { get; internal set; }
     /// <summary>
     /// </summary>
-    public int DonationsPerWeek { get; set; }
+    public int DonationsPerWeek { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ClanScore { get; set; }
+    public int ClanScore { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ClanChestMaxLevel { get; set; }
+    public int ClanChestMaxLevel { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ClanWarTrophies { get; set; }
+    public int ClanWarTrophies { get; internal set; }
     /// <summary>
     /// </summary>
-    public int BadgeId { get; set; }
+    public int BadgeId { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public Location? Location { get; set; }
+    public Location? Location { get; internal set; }
     /// <summary>
     /// </summary>
-    public ClanTypeEnum Type { get; set; }
+    public ClanTypeEnum Type { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Members { get; set; }
+    public int Members { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Description { get; set; }
+    public string? Description { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ClanChestPoints { get; set; }
+    public int ClanChestPoints { get; internal set; }
     /// <summary>
     /// </summary>
-    public BadgeUrls? BadgeUrls { get; set; }
+    public BadgeUrls? BadgeUrls { get; internal set; }
 }

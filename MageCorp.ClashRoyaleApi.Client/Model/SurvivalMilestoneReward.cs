@@ -8,26 +8,26 @@ public class SurvivalMilestoneReward
 {
     /// <summary>
     /// </summary>
-    public string? Chest { get; set; }
+    public string? Chest { get; internal set; }
     /// <summary>
     /// </summary>
-    public RarityEnum Rarity { get; set; }
+    public RarityEnum Rarity { get; internal set; }
     /// <summary>
     /// </summary>
-    public ResourceEnum Resource { get; set; }
+    public ResourceEnum Resource { get; internal set; }
     /// <summary>
     /// </summary>
-    public SurvivalMilestoneRewardTypeEnum Type { get; set; }
+    public SurvivalMilestoneRewardTypeEnum Type { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Amount { get; set; }
+    public int Amount { get; internal set; }
     /// <summary>
     /// </summary>
-    public Card? Card { get; set; }
+    public Card? Card { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? ConsumableName { get; set; }
+    public string? ConsumableName { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Wins { get; set; }
+    public int Wins { get; internal set; }
 }

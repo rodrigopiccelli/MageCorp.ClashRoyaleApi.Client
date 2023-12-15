@@ -6,26 +6,26 @@ public class ClanWarClan
 {
     /// <summary>
     /// </summary>
-    public int Crowns { get; set; }
+    public int Crowns { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ClanScore { get; set; }
+    public int ClanScore { get; internal set; }
     /// <summary>
     /// </summary>
-    public int BadgeId { get; set; }
+    public int BadgeId { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Participants { get; set; }
+    public int Participants { get; internal set; }
     /// <summary>
     /// </summary>
-    public int BattlesPlayed { get; set; }
+    public int BattlesPlayed { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Wins { get; set; }
+    public int Wins { get; internal set; }
 }

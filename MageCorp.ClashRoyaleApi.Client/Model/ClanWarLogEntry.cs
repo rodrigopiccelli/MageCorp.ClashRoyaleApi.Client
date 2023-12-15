@@ -9,15 +9,15 @@ public class ClanWarLogEntry
 {
     /// <summary>
     /// </summary>
-    public ClanWarStandingList? Standings { get; set; }
+    public ClanWarStandingList? Standings { get; internal set; }
     /// <summary>
     /// </summary>
-    public int SeasonId { get; set; }
+    public int SeasonId { get; internal set; }
     /// <summary>
     /// </summary>
-    public ClanWarParticipantList? Participants { get; set; }
+    public ClanWarParticipantList? Participants { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? CreatedDate { get; set; }
+    public DateTime? CreatedDate { get; internal set; }
 }

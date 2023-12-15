@@ -10,39 +10,39 @@ public class ClanMember
 {
     /// <summary>
     /// </summary>
-    public Arena? Arena { get; set; }
+    public Arena? Arena { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ClanChestPoints { get; set; }
+    public int ClanChestPoints { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? LastSeen { get; set; }
+    public DateTime? LastSeen { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public RoleEnum Role { get; set; }
+    public RoleEnum Role { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ExpLevel { get; set; }
+    public int ExpLevel { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Trophies { get; set; }
+    public int Trophies { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ClanRank { get; set; }
+    public int ClanRank { get; internal set; }
     /// <summary>
     /// </summary>
-    public int PreviousClanRank { get; set; }
+    public int PreviousClanRank { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Donations { get; set; }
+    public int Donations { get; internal set; }
     /// <summary>
     /// </summary>
-    public int DonationsReceived { get; set; }
+    public int DonationsReceived { get; internal set; }
 }

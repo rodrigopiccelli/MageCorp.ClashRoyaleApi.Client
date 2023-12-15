@@ -8,5 +8,5 @@ public class UpcomingChests : ApiResponse
 {
     /// <summary>
     /// </summary>
-    public ChestList? Items { get; set; }
+    public ChestList? Items { get; internal set; }
 }

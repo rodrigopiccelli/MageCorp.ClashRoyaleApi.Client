@@ -11,22 +11,22 @@ public class CurrentClanWar: ApiResponse
 {
     /// <summary>
     /// </summary>
-    public CurrentClanWarStateEnum State { get; set; }
+    public CurrentClanWarStateEnum State { get; internal set; }
     /// <summary>
     /// </summary>
-    public ClanWarClan? Clan { get; set; }
+    public ClanWarClan? Clan { get; internal set; }
     /// <summary>
     /// </summary>
-    public ClanWarParticipantList? Participants { get; set; }
+    public ClanWarParticipantList? Participants { get; internal set; }
     /// <summary>
     /// </summary>
-    public ClanWarClanList? Clans { get; set; }
-    /// <summary>
-    /// </summary>
-    [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? CollectionEndTime { get; set; }
+    public ClanWarClanList? Clans { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? WarEndTime { get; set; }
+    public DateTime? CollectionEndTime { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
+    public DateTime? WarEndTime { get; internal set; }
 }

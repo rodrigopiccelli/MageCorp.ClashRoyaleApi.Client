@@ -6,8 +6,8 @@ public class PeriodLog
 {
     /// <summary>
     /// </summary>
-    public PeriodLogEntryList? Items { get; set; }
+    public PeriodLogEntryList? Items { get; internal set; }
     /// <summary>
     /// </summary>
-    public int PeriodIndex { get; set; }
+    public int PeriodIndex { get; internal set; }
 }

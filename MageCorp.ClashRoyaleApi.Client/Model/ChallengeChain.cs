@@ -10,19 +10,19 @@ public class ChallengeChain
 {
     /// <summary>
     /// </summary>
-    public string? Title { get; set; }
+    public string? Title { get; internal set; }
     /// <summary>
     /// </summary>
-    public ChallengeChainTypeEnum Type { get; set; }
-    /// <summary>
-    /// </summary>
-    [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? StartTime { get; set; }
+    public ChallengeChainTypeEnum Type { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? EndTime { get; set; }
+    public DateTime? StartTime { get; internal set; }
     /// <summary>
     /// </summary>
-    public ChallengeList? Challenge { get; set; }
+    [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
+    public DateTime? EndTime { get; internal set; }
+    /// <summary>
+    /// </summary>
+    public ChallengeList? Challenge { get; internal set; }
 }

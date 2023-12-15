@@ -9,37 +9,40 @@ public class LadderTournament
 {
     /// <summary>
     /// </summary>
-    public GameMode? GameMode { get; set; }
+    public GameMode? GameMode { get; internal set; }
     /// <summary>
     /// </summary>
-    public int TournamentLevel { get; set; }
+    public int TournamentLevel { get; internal set; }
     /// <summary>
     /// </summary>
-    public SurvivalMilestoneRewardList? MilestoneRewards { get; set; }
+    public SurvivalMilestoneRewardList? MilestoneRewards { get; internal set; }
     /// <summary>
     /// </summary>
-    public SurvivalMilestoneRewardList? FreeTierRewards { get; set; }
+    public SurvivalMilestoneRewardList? FreeTierRewards { get; internal set; }
     /// <summary>
     /// </summary>
-    public int MaxLosses { get; set; }
+    public int MaxLosses { get; internal set; }
     /// <summary>
     /// </summary>
-    public int MinExpLevel { get; set; }
+    public int MinExpLevel { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Title { get; set; }
-    /// <summary>
-    /// </summary>
-    [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? StartTime { get; set; }
+    public string? Title { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
-    public DateTime? EndTime { get; set; }
+    public DateTime? StartTime { get; internal set; }
     /// <summary>
     /// </summary>
-    public SurvivalMilestoneRewardList? TopRankReward { get; set; }
+    [JsonConverter(typeof(ClashRoyaleApiDateFormatJsonConverter))]
+    public DateTime? EndTime { get; internal set; }
+    /// <summary>
+    /// </summary>
+    public SurvivalMilestoneRewardList? TopRankReward { get; internal set; }
+    /// <summary>
+    /// </summary>
+    public int MaxTopRewardRank { get; internal set; }
 }

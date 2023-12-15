@@ -6,20 +6,20 @@ public class PlayerPathOfLegendRanking
 {
     /// <summary>
     /// </summary>
-    public PlayerRankingClan? Clan { get; set; }
+    public PlayerRankingClan? Clan { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Tag { get; set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
-    public string? Name { get; set; }
+    public string? Name { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ExpLevel { get; set; }
+    public int ExpLevel { get; internal set; }
     /// <summary>
     /// </summary>
-    public int Rank { get; set; }
+    public int Rank { get; internal set; }
     /// <summary>
     /// </summary>
-    public int EloRating { get; set; }
+    public int EloRating { get; internal set; }
 }

@@ -6,26 +6,26 @@ public class PeriodLogEntry
 {
     /// <summary>
     /// </summary>
-    public PeriodLogEntryClan? Clan { get; set; }
+    public PeriodLogEntryClan? Clan { get; internal set; }
     /// <summary>
     /// </summary>
-    public int PointsEarned { get; set; }
+    public int PointsEarned { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ProgressStartOfDay { get; set; }
+    public int ProgressStartOfDay { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ProgressEndOfDay { get; set; }
+    public int ProgressEndOfDay { get; internal set; }
     /// <summary>
     /// </summary>
-    public int EndOfDayRank { get; set; }
+    public int EndOfDayRank { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ProgressEarned { get; set; }
+    public int ProgressEarned { get; internal set; }
     /// <summary>
     /// </summary>
-    public int NumOfDefensesRemaining { get; set; }
+    public int NumOfDefensesRemaining { get; internal set; }
     /// <summary>
     /// </summary>
-    public int ProgressEarnedFromDefenses { get; set; }
+    public int ProgressEarnedFromDefenses { get; internal set; }
 }
