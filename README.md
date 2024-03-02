@@ -1,12 +1,12 @@
 # MageCorp.ClashRoyaleApi.Client
-Client library (C# wrapper) written in .NET 8.0 that provides an easy way to interact with the official  [Clash Royale API](https://developer.clashroyale.com) directly or through proxy
+Client library (C# wrapper) written in .NET (7.0/8.0) that provides an easy way to interact with the official  [Clash Royale API](https://developer.clashroyale.com) directly or through proxy
 
 |                         | Stable                                                                                                                                  |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | Clash Royale API Client | [![NuGet](https://img.shields.io/nuget/v/MageCorp.ClashRoyaleApi.Client.svg)](https://www.nuget.org/packages/MageCorp.ClashRoyaleApi.Client/) |
 
 ## Supported Platforms
-- .Net 8.0
+- .Net 7.0; .Net 8.0
 
 ## Features
 
