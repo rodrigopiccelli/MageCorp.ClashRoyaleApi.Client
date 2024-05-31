@@ -15,7 +15,7 @@ public class ApiOptions
     /// <param name="apiVersion">v1</param>
     /// <param name="useProxy">false</param>
     /// <param name="proxyAddress">https://proxy.royaleapi.dev</param>
-    public ApiOptions(string bearerToken, string apiAddress = "https://developer.clashroyale.com/", string apiVersion = "v1", bool useProxy = false, string proxyAddress = "https://proxy.royaleapi.dev")
+    public ApiOptions(string bearerToken, string apiAddress = "https://api.clashroyale.com", string apiVersion = "v1", bool useProxy = false, string proxyAddress = "https://proxy.royaleapi.dev")
     {
         BearerToken = bearerToken;
         ApiAddress = apiAddress;
