@@ -12,14 +12,13 @@ namespace MageCorp.ClashRoyaleApi.Client
 
         private ClashRoyaleApiClient(ApiOptions apiOptions)
         {
-            if (apiOptions == null)
-                throw new ArgumentNullException(nameof(apiOptions));
+            ArgumentNullException.ThrowIfNull(apiOptions);
 
             httpClient = new HttpClient(new SocketsHttpHandler
             {
                 PooledConnectionLifetime = TimeSpan.FromMinutes(2)
             });
-            httpClient.ConfigureApiOptions(apiOptions ?? new());
+            httpClient.ConfigureApiOptions(apiOptions);
 
             CardsService = new CardsService(httpClient);
             ChallengesService = new ChallengesService(httpClient);

@@ -29,21 +29,21 @@ public class ApiOptions
     /// </summary>
     public string BearerToken { get; set; }
     /// <summary>
-    /// Clash Royale API address
-    /// https://developer.clashroyale.com/
+    /// Clash Royale API address.
+    /// https://api.clashroyale.com/
     /// </summary>
     public string ApiAddress { get; set; }
     /// <summary>
-    /// Clash Royale API proxy Address
+    /// Clash Royale API proxy Address.
     /// ex: https://proxy.royaleapi.dev
     /// </summary>
     public string ProxyAddress { get; set; }
     /// <summary>
-    /// Clash Royale API Version
+    /// Clash Royale API Version.
     /// </summary>
     public string ApiVersion { get; set; }
     /// <summary>
-    /// Specifies if should use proxy address
+    /// Specifies if should use proxy address.
     /// </summary>
     public bool UseProxy { get; set; }
 }
