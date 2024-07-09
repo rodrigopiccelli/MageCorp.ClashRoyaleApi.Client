@@ -90,6 +90,18 @@ public enum BattleTypeEnum
     PathOfLegend,
     /// <summary>
     /// </summary>
+    [EnumMember(Value = "SEASONAL_BATTLE")]
+    SeasonalBattle,
+    /// <summary>
+    /// </summary>
+    [EnumMember(Value = "PRACTICE")]
+    Practice,
+    /// <summary>
+    /// </summary>
+    [EnumMember(Value = "TRAIL")]
+    Trail,
+    /// <summary>
+    /// </summary>
     [EnumMember(Value = "UNKNOWN")]
     Unknown
 }

@@ -14,6 +14,10 @@ public enum CurrentRiverRaceStateEnum
     ClanNotFound,
     /// <summary>
     /// </summary>
+    [EnumMember(Value = "ACCESS_DENIED")]
+    AccessDenied,
+    /// <summary>
+    /// </summary>
     [EnumMember(Value = "MATCHMAKING")]
     Matchmaking,
     /// <summary>

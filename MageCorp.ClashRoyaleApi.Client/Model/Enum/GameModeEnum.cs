@@ -59,5 +59,13 @@ public enum GameModeEnum
     /// <summary>
     /// </summary>
     [EnumMember(Value = "BEST_OF_3")]
-    BestOfThree
+    BestOfThree,
+    /// <summary>
+    /// </summary>
+    [EnumMember(Value = "MEGA_DRAFT")]
+    MegaDraft,
+    /// <summary>
+    /// </summary> 
+    [EnumMember(Value = "HEIST")]
+    Heist
 }
