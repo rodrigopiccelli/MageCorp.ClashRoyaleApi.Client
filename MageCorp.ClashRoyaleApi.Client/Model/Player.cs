@@ -151,5 +151,9 @@ public class Player : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
+    public Progress? Progress { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
     public int TotalExpPoints { get; internal set; }
 }
