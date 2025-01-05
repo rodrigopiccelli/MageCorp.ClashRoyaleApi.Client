@@ -102,6 +102,10 @@ public enum BattleTypeEnum
     Trail,
     /// <summary>
     /// </summary>
+    [EnumMember(Value = "CHALLENGE")]
+    Challenge,
+    /// <summary>
+    /// </summary>
     [EnumMember(Value = "UNKNOWN")]
     Unknown
 }
