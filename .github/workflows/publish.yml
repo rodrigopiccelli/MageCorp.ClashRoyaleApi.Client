@@ -7,7 +7,9 @@ on:
   pull_request:
     types: [closed]
     branches:
-      - 'master'
+      - 'main'
+  workflow_dispatch:
+
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
   DOTNET_NOLOGO: true
@@ -24,6 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     - name: Setup dotnet
       uses: actions/setup-dotnet@v4
       with:
@@ -63,6 +67,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -76,6 +82,8 @@ jobs:
     needs: [ validate_nuget, run_test ]
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     - uses: actions/download-artifact@v4
       with:
         name: nuget
