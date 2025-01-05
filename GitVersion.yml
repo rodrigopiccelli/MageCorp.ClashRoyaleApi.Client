@@ -2,7 +2,6 @@ mode: ContinuousDeployment
 branches:
   master:
     increment: Patch
-    tag: ''
     tracks-release-branches: false
     regex: master
     source-branches: [feature, hotfix, release]
