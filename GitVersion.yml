@@ -5,7 +5,6 @@ branches:
     tracks-release-branches: false
     regex: master
     source-branches: [feature, hotfix, release]
-    is-mainline: true
 ignore:
   sha: []
 merge-message-formats: {}
