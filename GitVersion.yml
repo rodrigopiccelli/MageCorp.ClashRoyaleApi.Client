@@ -2,7 +2,6 @@ mode: ContinuousDeployment
 branches:
   master:
     increment: Patch
-    prevent-increment-of-merged-branch-version: true
     tag: ''
     tracks-release-branches: false
     regex: master
