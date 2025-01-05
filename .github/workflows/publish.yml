@@ -7,13 +7,12 @@ on:
   pull_request:
     types: [closed]
     branches:
-      - 'master'
+      - 'main'
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
   DOTNET_NOLOGO: true
   NuGetDirectory: ${{ github.workspace }}/nuget
-  ApiSettings_ValidBearerToken: ${{ secrets.INTEGRATION_API_TOKEN }}
 
 defaults:
   run:
@@ -25,13 +24,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
     - name: Setup dotnet
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '9.0.x'
-    - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+    - name: Build project
+      run: dotnet build --configuration Release
+    - name: Pack project
+      run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
     - uses: actions/upload-artifact@v4
       with:
         name: nuget
@@ -64,10 +64,10 @@ jobs:
   run_test:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    env:
+      ApiSettings_ValidBearerToken: ${{ secrets.INTEGRATION_API_TOKEN }}
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -81,8 +81,6 @@ jobs:
     needs: [ validate_nuget, run_test ]
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
     - uses: actions/download-artifact@v4
       with:
         name: nuget
