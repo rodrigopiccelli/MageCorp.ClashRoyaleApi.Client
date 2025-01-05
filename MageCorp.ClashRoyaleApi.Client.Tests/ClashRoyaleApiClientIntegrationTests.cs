@@ -17,10 +17,10 @@ public class ClashRoyaleApiClientIntegrationTests
     public ClashRoyaleApiClientIntegrationTests()
     {
         var configuration = new ConfigurationBuilder()
-            .AddEnvironmentVariables()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: true)
+            .AddEnvironmentVariables()
             .Build();
 
         _validBearerToken = configuration["ApiSettings:ValidBearerToken"]!;
