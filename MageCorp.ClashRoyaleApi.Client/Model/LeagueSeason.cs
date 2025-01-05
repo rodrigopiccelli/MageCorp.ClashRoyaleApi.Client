@@ -10,5 +10,5 @@ public class LeagueSeason : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public int Id { get; internal set; }
+    public string? Id { get; internal set; }
 }

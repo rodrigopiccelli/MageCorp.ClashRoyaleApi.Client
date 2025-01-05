@@ -52,7 +52,7 @@ internal abstract class ApiClient
 
                 if (response.StatusCode == HttpStatusCode.OK)
                     result = JsonSerializer.Deserialize<T>(message, options);
-                else
+                else if(message != string.Empty)
                     result.Error = JsonSerializer.Deserialize<ClientError>(message, options);
 
                 result!.HttpStatusCode = response.StatusCode;

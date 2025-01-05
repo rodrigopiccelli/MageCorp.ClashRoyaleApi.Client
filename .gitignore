@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MageCorp.ClashRoyaleApi.Client.Tests/appsettings.local.json

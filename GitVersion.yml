@@ -1,0 +1,14 @@
+mode: ContinuousDeployment
+branches:
+  master:
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    tag: ''
+    tracks-release-branches: false
+    regex: master
+    source-branches: [feature, hotfix, release]
+    is-mainline: true
+ignore:
+  sha: []
+merge-message-formats: {}
+next-version: 1.5.0

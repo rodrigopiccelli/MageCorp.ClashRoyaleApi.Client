@@ -14,15 +14,15 @@ public class SurvivalMilestoneReward
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public RarityEnum Rarity { get; internal set; }
+    public RarityEnum? Rarity { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public ResourceEnum Resource { get; internal set; }
+    public ResourceEnum? Resource { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public SurvivalMilestoneRewardTypeEnum Type { get; internal set; }
+    public SurvivalMilestoneRewardTypeEnum? Type { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

@@ -45,6 +45,8 @@ public static class ServiceCollectionExtensions
             .AddTransient<IGlobalTournamentsService, GlobalTournamentsService>()
             .AddTransient<ILocationsService, LocationsService>()
             .AddTransient<IPlayersService, PlayersService>()
-            .AddTransient<ITournamentsService, TournamentsService>();
+            .AddTransient<ITournamentsService, TournamentsService>()
+            .AddTransient<IFilesService, FilesService>()
+            .AddTransient<ILeaderboardsService, LeaderboardsService>();
     }
 }

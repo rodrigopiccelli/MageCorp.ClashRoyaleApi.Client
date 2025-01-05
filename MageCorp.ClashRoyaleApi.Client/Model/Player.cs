@@ -11,50 +11,6 @@ public class Player : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public PlayerClan? Clan { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public Arena? Arena { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public RoleEnum Role { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public int Wins { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public int Losses { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public int TotalDonations { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public PlayerLeagueStatistics? LeagueStatistics { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public PlayerCardList? Cards { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public PlayerCardList? SupportCards { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public Card? CurrentFavouriteCard { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public PlayerAchievementBadgeList? Badges { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
     public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
@@ -75,15 +31,11 @@ public class Player : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public int Donations { get; internal set; }
+    public int Wins { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public int DonationsReceived { get; internal set; }
-    /// <summary>
-    /// </summary>
-    [JsonInclude]
-    public PlayerAchievementProgressList? Achievements { get; internal set; }
+    public int Losses { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
@@ -111,11 +63,19 @@ public class Player : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public PlayerCardList? CurrentDeck { get; internal set; }
+    public RoleEnum Role { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public PlayerCardList? CurrentDeckSupportCards { get; internal set; }
+    public int Donations { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public int DonationsReceived { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public int TotalDonations { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
@@ -124,6 +84,46 @@ public class Player : ApiResponse
     /// </summary>
     [JsonInclude]
     public int ClanCardsCollected { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public PlayerClan? Clan { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public Arena? Arena { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public PlayerLeagueStatistics? LeagueStatistics { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public PlayerAchievementBadgeList? Badges { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public PlayerAchievementProgressList? Achievements { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public PlayerCardList? Cards { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public PlayerCardList? SupportCards { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public PlayerCardList? CurrentDeck { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public PlayerCardList? CurrentDeckSupportCards { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public Card? CurrentFavouriteCard { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

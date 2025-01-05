@@ -24,7 +24,7 @@ internal class LocationsService : ApiClient, ILocationsService
             new NameValueCollection { { "limit", limit?.ToString() }, { "after", after }, { "before", before } });
 
     public async Task<LeagueSeason?> GetLeagueSeasonAsync(string seasonId) =>
-        await GetAsync<LeagueSeason>($"locations/global/seasons{seasonId}");
+        await GetAsync<LeagueSeason>($"locations/global/seasons/{seasonId}");
 
     public async Task<PlayerRankingList?> ListSeasonPlayerRankingsAsync(string seasonId, int? limit = null, string? after = null, string? before = null) =>
         await GetAsync<PlayerRankingList>($"locations/global/seasons/{seasonId}/rankings/players",

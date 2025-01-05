@@ -10,30 +10,30 @@ public enum SurvivalMilestoneRewardTypeEnum
 {
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "NONE")]
+    [EnumMember(Value = "none")]
     None,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CARD_STACK")]
+    [EnumMember(Value = "cardStack")]
     CardStack,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CHEST")]
+    [EnumMember(Value = "chest")]
     Chest,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CARD_STACK_RANDOM")]
+    [EnumMember(Value = "cardStackRandom")]
     CardStackRandom,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "RESOURCE")]
+    [EnumMember(Value = "resource")]
     Resource,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "TRADE_TOKEN")]
+    [EnumMember(Value = "tradeToken")]
     TradeToken,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CONSUMABLE")]
+    [EnumMember(Value = "consumable")]
     Consumable
 }

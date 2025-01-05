@@ -7,9 +7,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MageCorp.ClashRoyaleApi.Cli
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{35BAABF1-7F6C-4D74-B6F7-F13162704BF2}"
 	ProjectSection(SolutionItems) = preProject
+		GitVersion.yml = GitVersion.yml
 		icon.png = icon.png
 		LICENSE = LICENSE
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MageCorp.ClashRoyaleApi.Client.Tests", "MageCorp.ClashRoyaleApi.Client.Tests\MageCorp.ClashRoyaleApi.Client.Tests.csproj", "{26533EDF-EA31-4C21-9229-DBAE8E1906EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{E8A2A601-2582-4553-AFAA-6257A6D74CC6}"
+	ProjectSection(SolutionItems) = preProject
+		.github\FUNDING.yml = .github\FUNDING.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{3CF5BC77-8E0B-4A60-A7E9-9A6232123473}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\publish.yml = .github\workflows\publish.yml
 	EndProjectSection
 EndProject
 Global
@@ -22,9 +35,16 @@ Global
 		{E34A7246-AA4C-47D8-9F4F-E4E0458A45CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E34A7246-AA4C-47D8-9F4F-E4E0458A45CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E34A7246-AA4C-47D8-9F4F-E4E0458A45CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26533EDF-EA31-4C21-9229-DBAE8E1906EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26533EDF-EA31-4C21-9229-DBAE8E1906EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26533EDF-EA31-4C21-9229-DBAE8E1906EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26533EDF-EA31-4C21-9229-DBAE8E1906EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3CF5BC77-8E0B-4A60-A7E9-9A6232123473} = {E8A2A601-2582-4553-AFAA-6257A6D74CC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE96EB1E-BA8F-4B8F-B97F-571B086C831D}

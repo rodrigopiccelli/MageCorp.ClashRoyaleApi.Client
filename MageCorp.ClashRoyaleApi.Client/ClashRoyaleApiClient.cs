@@ -27,6 +27,8 @@ namespace MageCorp.ClashRoyaleApi.Client
             LocationsService = new LocationsService(httpClient);
             PlayersService = new PlayersService(httpClient);
             TournamentsService = new TournamentsService(httpClient);
+            LeaderboardsService = new LeaderboardsService(httpClient);
+            FilesService = new FilesService(httpClient);
         }
 
         /// <summary>
@@ -67,5 +69,13 @@ namespace MageCorp.ClashRoyaleApi.Client
         /// Access tournament information
         /// </summary>
         public ITournamentsService TournamentsService { get; internal set; }
+        /// <summary>
+        /// Access leaderboard information
+        /// </summary>
+        public ILeaderboardsService LeaderboardsService { get; internal set; }
+        /// <summary>
+        /// Access files information
+        /// </summary>
+        public IFilesService FilesService { get; internal set; }
     }
 }
