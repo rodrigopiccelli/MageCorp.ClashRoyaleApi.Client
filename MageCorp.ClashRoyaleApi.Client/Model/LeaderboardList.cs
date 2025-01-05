@@ -4,4 +4,6 @@ namespace MageCorp.ClashRoyaleApi.Client.Model;
 
 /// <summary>
 /// </summary>
-public class LadderTournamentList : ApiItemizedResponse<LadderTournament> { }
+public class LeaderboardList : ApiItemizedResponse<Leaderboard>
+{
+}

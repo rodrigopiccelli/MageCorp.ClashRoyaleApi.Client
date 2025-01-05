@@ -4,4 +4,4 @@ namespace MageCorp.ClashRoyaleApi.Client.Model;
 
 /// <summary>
 /// </summary>
-public class ClanList : ApiResponseList<Clan> { }
+public class ClanList : ApiPagedResponse<Clan> { }

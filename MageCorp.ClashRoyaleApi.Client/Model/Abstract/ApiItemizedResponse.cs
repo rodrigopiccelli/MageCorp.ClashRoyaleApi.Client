@@ -4,10 +4,10 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Abstract;
 
 /// <summary>
 /// </summary>
-public abstract class ApiPagedResponse<T> : ApiItemizedResponse<T>
+public abstract class ApiItemizedResponse<T> : ApiResponse
 {
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public Paging? Paging { get; internal set; }
+    public List<T>? Items { get; internal set; }
 }
