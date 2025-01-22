@@ -30,10 +30,15 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '9.0.x'
+    - name: Install GitVersion
+      run: dotnet tool install --global GitVersion.Tool
+    - name: Determine version
+      id: gitversion
+      run: gitversion /output json /output buildserver
     - name: Build project
       run: dotnet build --configuration Release
     - name: Pack project
-      run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+      run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }} /p:PackageVersion=${{ steps.gitversion.outputs.FullSemVer }}
     - uses: actions/upload-artifact@v4
       with:
         name: nuget
