@@ -135,7 +135,7 @@ public class Player : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public int LegacyTrophyRoadHighScore { get; internal set; }
+    public int? LegacyTrophyRoadHighScore { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
