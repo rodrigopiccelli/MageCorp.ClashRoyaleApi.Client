@@ -49,12 +49,39 @@ If you do not want to use any DI framework, you have to instantiate `ClashRoyale
 
 #### <a name="clashroyaleapistandalone"></a> ClashRoyaleApiClient Standalone Usage
 
+##### Using Default HttpClient
+
 ```csharp
 ApiOptions apiOptions = new("<your token>");
 var clashRoyaleApiClient = ClashRoyaleApiClient.Create(apiOptions);
 var playersService = clashRoyaleApiClient.PlayersService;
 var clansService = clashRoyaleApiClient.ClansService;
 ```
+
+##### Using Custom HttpClient
+
+```csharp
+ApiOptions apiOptions = new("<your token>");
+HttpClient httpClient = new HttpClient(new SocketsHttpHandler { // Custom configuration for HttpClient }); 
+var clashRoyaleApiClient = ClashRoyaleApiClient.Create(apiOptions, httpClient);
+var playersService = clashRoyaleApiClient.PlayersService;
+var clansService = clashRoyaleApiClient.ClansService;
+```
+
+##### Using IHttpClientFactory
+
+```csharp
+ApiOptions apiOptions = new("<your token>");
+IServiceCollection services = new ServiceCollection();
+services.AddHttpClient();
+IServiceProvider serviceProvider = services.BuildServiceProvider();
+IHttpClientFactory httpClientFactory = serviceProvider.GetRequiredService();
+var clashRoyaleApiClient = ClashRoyaleApiClient.Create(apiOptions, httpClientFactory);
+var playersService = clashRoyaleApiClient.PlayersService;
+var clansService = clashRoyaleApiClient.ClansService;
+```
+
+
 `clashRoyaleApiClient` contains all necessary clients.
 
 ### <a name="di-initialization"></a> Microsoft.Extensions.DependencyInjection Initialization
