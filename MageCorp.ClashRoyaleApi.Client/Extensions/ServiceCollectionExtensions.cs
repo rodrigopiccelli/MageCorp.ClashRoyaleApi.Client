@@ -4,49 +4,63 @@ using Microsoft.Extensions.DependencyInjection;
 namespace MageCorp.ClashRoyaleApi.Client.Extensions;
 
 /// <summary>
+/// Extension methods for setting up ClashRoyaleApiClient services in an <see cref="IServiceCollection" />.
 /// </summary>
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Adds ClashRoyaleApiClient to ServiceColletion
+    /// Adds ClashRoyaleApiClient to the service collection using an API key.
     /// </summary>
-    /// <param name="services"></param>
-    /// <param name="apiKey">Clash Royale API Key</param>
-    /// <returns></returns>
+    /// <param name="services">The service collection.</param>
+    /// <param name="apiKey">The Clash Royale API key.</param>
+    /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, string apiKey) => 
         services.AddClashRoyaleApiClient(new ApiOptions(apiKey));
 
     /// <summary>
-    /// Adds ClashRoyaleApiClient to ServiceColletion
+    /// Adds ClashRoyaleApiClient to the service collection using <see cref="ApiOptions"/>.
     /// </summary>
-    /// <param name="services"></param>
-    /// <param name="apiOptions"></param>
-    /// <returns></returns>
-    public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, ApiOptions apiOptions) => 
-        services.AddClashRoyaleApiClient(provider => apiOptions);
+    /// <param name="services">The service collection.</param>
+    /// <param name="apiOptions">The API options.</param>
+    /// <returns>The updated service collection.</returns>
+    public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, ApiOptions apiOptions) =>
+        services.AddClashRoyaleApiClient(_ => apiOptions);
 
     /// <summary>
-    /// Adds ClashRoyaleApiClient to ServiceColletion
+    /// Adds ClashRoyaleApiClient to the service collection using a function to configure <see cref="ApiOptions"/>.
     /// </summary>
-    /// <param name="services"></param>
-    /// <param name="apiOptionsAction"></param>
-    /// <returns></returns>
-    public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, Func<IServiceProvider, ApiOptions> apiOptionsAction)
+    /// <param name="services">The service collection.</param>
+    /// <param name="apiOptionsFactory">A function to configure the API options.</param>
+    /// <returns>The updated service collection.</returns>
+    public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, Func<IServiceProvider, ApiOptions> apiOptionsFactory)
     {
-        services.AddTransient(apiOptionsAction);
-        services.AddHttpClient("ClashRoyaleApi", (IServiceProvider provider, HttpClient httpClient) => {
+        services.AddTransient(apiOptionsFactory);
+        services.AddHttpClient("ClashRoyaleApi", (provider, httpClient) =>
+        {
             var apiOptions = provider.GetRequiredService<ApiOptions>();
             httpClient.ConfigureApiOptions(apiOptions);
         });
-        return services
-            .AddTransient<IClansService, ClansService>()
-            .AddTransient<ICardsService, CardsService>()
-            .AddTransient<IChallengesService, ChallengesService>()
-            .AddTransient<IGlobalTournamentsService, GlobalTournamentsService>()
-            .AddTransient<ILocationsService, LocationsService>()
-            .AddTransient<IPlayersService, PlayersService>()
-            .AddTransient<ITournamentsService, TournamentsService>()
-            .AddTransient<IFilesService, FilesService>()
-            .AddTransient<ILeaderboardsService, LeaderboardsService>();
+
+        // Register all services related to ClashRoyaleApiClient
+        RegisterClashRoyaleApiServices(services);
+
+        return services;
+    }
+
+    /// <summary>
+    /// Registers all services related to ClashRoyaleApiClient.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    private static void RegisterClashRoyaleApiServices(IServiceCollection services)
+    {
+        services.AddTransient<IClansService, ClansService>()
+                .AddTransient<ICardsService, CardsService>()
+                .AddTransient<IChallengesService, ChallengesService>()
+                .AddTransient<IGlobalTournamentsService, GlobalTournamentsService>()
+                .AddTransient<ILocationsService, LocationsService>()
+                .AddTransient<IPlayersService, PlayersService>()
+                .AddTransient<ITournamentsService, TournamentsService>()
+                .AddTransient<IFilesService, FilesService>()
+                .AddTransient<ILeaderboardsService, LeaderboardsService>();
     }
 }

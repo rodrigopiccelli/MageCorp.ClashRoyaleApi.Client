@@ -1,8 +1,8 @@
-﻿using MageCorp.ClashRoyaleApi.Client.Model;
+﻿using MageCorp.ClashRoyaleApi.Client.Extensions;
 using MageCorp.ClashRoyaleApi.Client.Interfaces;
-using System.Net;
+using MageCorp.ClashRoyaleApi.Client.Model;
 using System.Collections.Specialized;
-using MageCorp.ClashRoyaleApi.Client.Extensions;
+using System.Net;
 using System.Text.Json;
 
 namespace MageCorp.ClashRoyaleApi.Client.Abstract;
@@ -11,15 +11,24 @@ internal abstract class ApiClient
 {
     private readonly IHttpClientFactory? httpClientFactory;
     private readonly HttpClient? localHttpClient;
+    private readonly JsonSerializerOptions jsonSerializerOptions;
 
     public ApiClient(IHttpClientFactory httpClientFactory)
     {
         this.httpClientFactory = httpClientFactory;
+        jsonSerializerOptions = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+        };
     }
 
     internal ApiClient(HttpClient httpClient)
     {
         localHttpClient = httpClient;
+        jsonSerializerOptions = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+        };
     }
 
     public async Task<T?> GetAsync<T>(string requestUri) where T : IApiResponse =>
@@ -42,21 +51,15 @@ internal abstract class ApiClient
 
             if (httpClient != null)
             {
-                var response = await httpClient.GetAsync(requestUri);
-                var message = await response.Content.ReadAsStringAsync();
-
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true,
-                };
+                var response = await httpClient.GetAsync(requestUri).ConfigureAwait(false);
+                var message = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 if (response.StatusCode == HttpStatusCode.OK)
-                    result = JsonSerializer.Deserialize<T>(message, options);
+                    result = JsonSerializer.Deserialize<T>(message, jsonSerializerOptions);
                 else if(message != string.Empty)
-                    result.Error = JsonSerializer.Deserialize<ClientError>(message, options);
+                    result.Error = JsonSerializer.Deserialize<ClientError>(message, jsonSerializerOptions);
 
                 result!.HttpStatusCode = response.StatusCode;
-
             }
 
             return result;
