@@ -6,30 +6,30 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Enum;
 /// <summary>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum MatchStateEnum
+public enum CurrentRiverRaceState
 {
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "PENDING")]
-    Pending,
+    [EnumMember(Value = "CLAN_NOT_FOUND")]
+    ClanNotFound,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CANCELLED")]
-    Cancelled,
+    [EnumMember(Value = "ACCESS_DENIED")]
+    AccessDenied,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "TIMED_OUT")]
-    TimedOut,
+    [EnumMember(Value = "MATCHMAKING")]
+    Matchmaking,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "IN_PROGRESS")]
-    InProgress,
+    [EnumMember(Value = "MATCHED")]
+    Matched,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "COMPLETE")]
-    Complete,
+    [EnumMember(Value = "FULL")]
+    Full,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "FAILED")]
-    Failed
+    [EnumMember(Value = "ENDED")]
+    Ended
 }

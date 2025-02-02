@@ -63,7 +63,7 @@ public class Player : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public RoleEnum Role { get; internal set; }
+    public Role Role { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

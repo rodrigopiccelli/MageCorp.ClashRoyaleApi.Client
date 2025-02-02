@@ -20,7 +20,7 @@ public class Match
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public MatchStateEnum State { get; internal set; }
+    public MatchState State { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

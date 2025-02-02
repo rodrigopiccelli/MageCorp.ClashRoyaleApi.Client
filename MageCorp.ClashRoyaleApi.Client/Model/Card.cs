@@ -34,5 +34,5 @@ public class Card
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public RarityEnum? Rarity { get; internal set; }
+    public Rarity? Rarity { get; internal set; }
 }

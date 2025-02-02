@@ -15,7 +15,7 @@ public class ChallengeChain
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public ChallengeChainTypeEnum Type { get; internal set; }
+    public ChallengeChainType Type { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

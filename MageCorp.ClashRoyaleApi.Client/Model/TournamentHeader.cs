@@ -11,7 +11,7 @@ public class TournamentHeader
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public TournamentStateEnum State { get; internal set; }
+    public TournamentState State { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
@@ -36,7 +36,7 @@ public class TournamentHeader
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public TournamentTypeEnum Type { get; internal set; }
+    public TournamentType Type { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

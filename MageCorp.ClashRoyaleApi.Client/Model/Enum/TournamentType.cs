@@ -6,7 +6,7 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Enum;
 /// <summary>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum ClanTypeEnum
+public enum TournamentType
 {
     /// <summary>
     /// </summary>
@@ -14,10 +14,10 @@ public enum ClanTypeEnum
     Open,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "INVITE_ONLY")]
-    InviteOnly,
+    [EnumMember(Value = "PASSWORD_PROTECTED")]
+    PasswordProtected,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CLOSED")]
-    Closed
+    [EnumMember(Value = "UNKNOWN")]
+    Unknown
 }

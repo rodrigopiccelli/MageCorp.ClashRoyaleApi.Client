@@ -6,22 +6,18 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Enum;
 /// <summary>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum TournamentStateEnum
+public enum PeriodType
 {
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "IN_PREPARATION")]
-    InPreparation,
+    [EnumMember(Value = "TRAINING")]
+    Training,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "IN_PROGRESS")]
-    InProgress,
+    [EnumMember(Value = "WAR_DAY")]
+    WarDay,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "ENDED")]
-    Ended,
-    /// <summary>
-    /// </summary>
-    [EnumMember(Value = "UNKNOWN")]
-    Unknown
+    [EnumMember(Value = "COLOSSEUM")]
+    Colosseum
 }

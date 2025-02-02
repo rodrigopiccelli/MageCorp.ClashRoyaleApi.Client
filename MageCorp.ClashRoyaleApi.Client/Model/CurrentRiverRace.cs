@@ -12,7 +12,7 @@ public class CurrentRiverRace : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public CurrentRiverRaceStateEnum State { get; internal set; }
+    public CurrentRiverRaceState State { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
@@ -42,7 +42,7 @@ public class CurrentRiverRace : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public PeriodTypeEnum PeriodType { get; internal set; }
+    public PeriodType PeriodType { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

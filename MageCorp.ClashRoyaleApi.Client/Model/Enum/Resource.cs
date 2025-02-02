@@ -6,16 +6,12 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Enum;
 /// <summary>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum TournamentTypeEnum
+public enum Resource
 {
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "OPEN")]
-    Open,
-    /// <summary>
-    /// </summary>
-    [EnumMember(Value = "PASSWORD_PROTECTED")]
-    PasswordProtected,
+    [EnumMember(Value = "GOLD")]
+    Gold,
     /// <summary>
     /// </summary>
     [EnumMember(Value = "UNKNOWN")]

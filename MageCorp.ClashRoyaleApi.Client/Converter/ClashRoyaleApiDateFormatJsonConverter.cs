@@ -7,7 +7,7 @@ namespace MageCorp.ClashRoyaleApi.Client.Converter;
 internal class ClashRoyaleApiDateFormatJsonConverter : JsonConverter<DateTime?>
 {
 
-    public override bool CanConvert(Type objectType)
+    public override bool CanConvert(Type typeToConvert)
     {
         return true;
     }

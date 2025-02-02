@@ -6,14 +6,18 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Enum;
 /// <summary>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum ResourceEnum
+public enum ClanType
 {
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "GOLD")]
-    Gold,
+    [EnumMember(Value = "OPEN")]
+    Open,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "UNKNOWN")]
-    Unknown
+    [EnumMember(Value = "INVITE_ONLY")]
+    InviteOnly,
+    /// <summary>
+    /// </summary>
+    [EnumMember(Value = "CLOSED")]
+    Closed
 }

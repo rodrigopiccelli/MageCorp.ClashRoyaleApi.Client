@@ -13,7 +13,7 @@ internal abstract class ApiClient
     private readonly HttpClient? localHttpClient;
     private readonly JsonSerializerOptions jsonSerializerOptions;
 
-    public ApiClient(IHttpClientFactory httpClientFactory)
+    protected ApiClient(IHttpClientFactory httpClientFactory)
     {
         this.httpClientFactory = httpClientFactory;
         jsonSerializerOptions = new JsonSerializerOptions
@@ -22,7 +22,7 @@ internal abstract class ApiClient
         };
     }
 
-    internal ApiClient(HttpClient httpClient)
+    private protected ApiClient(HttpClient httpClient)
     {
         localHttpClient = httpClient;
         jsonSerializerOptions = new JsonSerializerOptions

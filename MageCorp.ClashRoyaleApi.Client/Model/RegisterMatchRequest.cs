@@ -14,5 +14,5 @@ public class RegisterMatchRequest
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public GameModeEnum GameMode { get; internal set; }
+    public Enum.GameMode GameMode { get; internal set; }
 }

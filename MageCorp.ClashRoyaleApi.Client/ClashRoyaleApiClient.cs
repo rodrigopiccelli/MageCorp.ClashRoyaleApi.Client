@@ -8,25 +8,21 @@ namespace MageCorp.ClashRoyaleApi.Client
     /// </summary>
     public class ClashRoyaleApiClient
     {
-        private readonly HttpClient httpClient;
-
         private ClashRoyaleApiClient(HttpClient httpClient, ApiOptions apiOptions)
         {
-            ArgumentNullException.ThrowIfNull(httpClient, nameof(httpClient));
-            ArgumentNullException.ThrowIfNull(apiOptions, nameof(apiOptions));
+            ArgumentNullException.ThrowIfNull(httpClient);
+            ArgumentNullException.ThrowIfNull(apiOptions);
             httpClient.ConfigureApiOptions(apiOptions);
 
-            this.httpClient = httpClient;
-
-            CardsService = new CardsService(this.httpClient);
-            ChallengesService = new ChallengesService(this.httpClient);
-            ClansService = new ClansService(this.httpClient);
-            GlobalTournamentsService = new GlobalTournamentsService(this.httpClient);
-            LocationsService = new LocationsService(this.httpClient);
-            PlayersService = new PlayersService(this.httpClient);
-            TournamentsService = new TournamentsService(this.httpClient);
-            LeaderboardsService = new LeaderboardsService(this.httpClient);
-            FilesService = new FilesService(this.httpClient);
+            CardsService = new CardsService(httpClient);
+            ChallengesService = new ChallengesService(httpClient);
+            ClansService = new ClansService(httpClient);
+            GlobalTournamentsService = new GlobalTournamentsService(httpClient);
+            LocationsService = new LocationsService(httpClient);
+            PlayersService = new PlayersService(httpClient);
+            TournamentsService = new TournamentsService(httpClient);
+            LeaderboardsService = new LeaderboardsService(httpClient);
+            FilesService = new FilesService(httpClient);
         }
 
         /// <summary>
@@ -49,7 +45,7 @@ namespace MageCorp.ClashRoyaleApi.Client
         /// <param name="httpClientFactory">Instance of IHttpClientFactory</param>
         public static ClashRoyaleApiClient Create(ApiOptions apiOptions, IHttpClientFactory httpClientFactory)
         {
-            ArgumentNullException.ThrowIfNull(httpClientFactory, nameof(httpClientFactory));
+            ArgumentNullException.ThrowIfNull(httpClientFactory);
             var httpClient = httpClientFactory.CreateClient();
             return Create(apiOptions, httpClient);
         }
