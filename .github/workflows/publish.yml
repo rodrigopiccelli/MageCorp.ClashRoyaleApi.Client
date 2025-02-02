@@ -30,10 +30,15 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '9.0.x'
+    - name: Install GitVersion
+      run: dotnet tool install --global GitVersion.Tool
+    - name: Determine version
+      id: gitversion
+      run: gitversion /output json /output buildserver
     - name: Build project
       run: dotnet build --configuration Release
     - name: Pack project
-      run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+      run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }} /p:PackageVersion=${{ steps.gitversion.outputs.FullSemVer }}
     - uses: actions/upload-artifact@v4
       with:
         name: nuget
@@ -100,3 +105,22 @@ jobs:
         foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
             dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json
         }
+    - name: Create GitHub Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.gitversion.outputs.FullSemVer }}
+        release_name: Release ${{ steps.gitversion.outputs.FullSemVer }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.NuGetDirectory }}/*.nupkg
+        asset_name: magecorp.clashroyaleapi.client.${{ steps.gitversion.outputs.FullSemVer }}.nupkg
+        asset_content_type: application/zip

@@ -21,7 +21,7 @@ namespace MageCorp.ClashRoyaleApi.Client.Extensions
             }
 
             var apiToken = apiOptions.BearerToken?.Replace("Bearer", "").Replace(" ", "").Trim();
-            ArgumentException.ThrowIfNullOrEmpty(apiToken?.Trim(), nameof(apiOptions.BearerToken));
+            ArgumentException.ThrowIfNullOrEmpty(apiToken?.Trim());
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
         }
     }

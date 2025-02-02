@@ -6,34 +6,34 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Enum;
 /// <summary>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum SurvivalMilestoneRewardTypeEnum
+public enum CurrentClanWarState
 {
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "NONE")]
-    None,
+    [EnumMember(Value = "CLAN_NOT_FOUND")]
+    ClanNotFound,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CARD_STACK")]
-    CardStack,
+    [EnumMember(Value = "ACCESS_DENIED")]
+    AccessDenied,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CHEST")]
-    Chest,
+    [EnumMember(Value = "NOT_IN_WAR")]
+    NotInWar,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CARD_STACK_RANDOM")]
-    CardStackRandom,
+    [EnumMember(Value = "COLLECTION_DAY")]
+    CollectionDay,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "RESOURCE")]
-    Resource,
+    [EnumMember(Value = "MATCHMAKING")]
+    Matchmaking,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "TRADE_TOKEN")]
-    TradeToken,
+    [EnumMember(Value = "WAR_DAY")]
+    WarDay,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CONSUMABLE")]
-    Consumable
+    [EnumMember(Value = "ENDED")]
+    Ended
 }

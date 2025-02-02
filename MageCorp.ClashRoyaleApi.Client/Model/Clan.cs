@@ -19,7 +19,7 @@ public class Clan: ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public ClanChestStatusEnum ClanChestStatus { get; internal set; }
+    public ClanChestStatus ClanChestStatus { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
@@ -59,7 +59,7 @@ public class Clan: ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public ClanTypeEnum Type { get; internal set; }
+    public ClanType Type { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

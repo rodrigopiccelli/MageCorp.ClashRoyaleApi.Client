@@ -6,26 +6,30 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Enum;
 /// <summary>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum RarityEnum
+public enum Role
 {
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "COMMON")]
-    Common,
+    [EnumMember(Value = "NOT_MEMBER")]
+    NotMember,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "RARE")]
-    Rare,
+    [EnumMember(Value = "MEMBER")]
+    Member,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "EPIC")]
-    Epic,
+    [EnumMember(Value = "LEADER")]
+    Leader,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "LEGENDARY")]
-    Legendary,
+    [EnumMember(Value = "ADMIN")]
+    Admin,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CHAMPION")]
-    Champion
+    [EnumMember(Value = "COLEADER")]
+    Coleader,
+    /// <summary>
+    /// </summary>
+    [EnumMember(Value = "ELDER")]
+    Elder
 }

@@ -6,30 +6,26 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Enum;
 /// <summary>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum CurrentRiverRaceStateEnum
+public enum Rarity
 {
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "CLAN_NOT_FOUND")]
-    ClanNotFound,
+    [EnumMember(Value = "COMMON")]
+    Common,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "ACCESS_DENIED")]
-    AccessDenied,
+    [EnumMember(Value = "RARE")]
+    Rare,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "MATCHMAKING")]
-    Matchmaking,
+    [EnumMember(Value = "EPIC")]
+    Epic,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "MATCHED")]
-    Matched,
+    [EnumMember(Value = "LEGENDARY")]
+    Legendary,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "FULL")]
-    Full,
-    /// <summary>
-    /// </summary>
-    [EnumMember(Value = "ENDED")]
-    Ended
+    [EnumMember(Value = "CHAMPION")]
+    Champion
 }

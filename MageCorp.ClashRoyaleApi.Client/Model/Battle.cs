@@ -11,7 +11,7 @@ public class Battle
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public BattleTypeEnum Type { get; internal set; }
+    public BattleType Type { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
@@ -19,7 +19,7 @@ public class Battle
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public DeckSelectionEnum DeckSelection { get; internal set; }
+    public DeckSelection DeckSelection { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

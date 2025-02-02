@@ -6,20 +6,20 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Enum;
 /// <summary>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum ClanChestStatusEnum
+public enum TournamentState
 {
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "INACTIVE")]
-    Inactive,
+    [EnumMember(Value = "IN_PREPARATION")]
+    InPreparation,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "ACTIVE")]
-    Active,
+    [EnumMember(Value = "IN_PROGRESS")]
+    InProgress,
     /// <summary>
     /// </summary>
-    [EnumMember(Value = "COMPLETED")]
-    Completed,
+    [EnumMember(Value = "ENDED")]
+    Ended,
     /// <summary>
     /// </summary>
     [EnumMember(Value = "UNKNOWN")]

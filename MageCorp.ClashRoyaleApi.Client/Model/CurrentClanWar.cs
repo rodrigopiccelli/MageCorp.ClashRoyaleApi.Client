@@ -12,7 +12,7 @@ public class CurrentClanWar: ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public CurrentClanWarStateEnum State { get; internal set; }
+    public CurrentClanWarState State { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

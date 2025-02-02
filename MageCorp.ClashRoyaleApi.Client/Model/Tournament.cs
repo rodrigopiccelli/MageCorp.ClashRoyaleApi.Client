@@ -16,7 +16,7 @@ public class Tournament : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public TournamentStateEnum Status { get; internal set; }
+    public TournamentState Status { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
@@ -51,7 +51,7 @@ public class Tournament : ApiResponse
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public TournamentTypeEnum Type { get; internal set; }
+    public TournamentType Type { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]

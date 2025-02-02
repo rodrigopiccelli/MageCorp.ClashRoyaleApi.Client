@@ -6,7 +6,7 @@ namespace MageCorp.ClashRoyaleApi.Client.Model.Enum;
 /// <summary>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum GameModeEnum
+public enum GameMode
 {
     /// <summary>
     /// </summary>
