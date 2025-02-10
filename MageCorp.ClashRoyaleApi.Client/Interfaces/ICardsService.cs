@@ -10,6 +10,9 @@ public interface ICardsService
     /// <summary>
     /// Get list of available cards
     /// </summary>
+    /// <remarks>
+    /// Note: Pagination will not work as the Supercell API currently does not honor these parameters.
+    /// </remarks>
     /// <param name="limit">Limit the number of items returned in the response.</param>
     /// <param name="after">Return only items that occur after this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <param name="before">Return only items that occur before this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
