@@ -8,11 +8,11 @@ namespace MageCorp.ClashRoyaleApi.Client
     /// </summary>
     public class ClashRoyaleApiClient
     {
-        private ClashRoyaleApiClient(HttpClient httpClient, ApiOptions apiOptions)
+        private ClashRoyaleApiClient(HttpClient httpClient, ClashRoyaleApiOptions clashRoyaleApiOptions)
         {
             ArgumentNullException.ThrowIfNull(httpClient);
-            ArgumentNullException.ThrowIfNull(apiOptions);
-            httpClient.ConfigureApiOptions(apiOptions);
+            ArgumentNullException.ThrowIfNull(clashRoyaleApiOptions);
+            httpClient.ConfigureClashRoyaleApiOptions(clashRoyaleApiOptions);
 
             CardsService = new CardsService(httpClient);
             ChallengesService = new ChallengesService(httpClient);
@@ -28,35 +28,35 @@ namespace MageCorp.ClashRoyaleApi.Client
         /// <summary>
         /// Creates an instance of ClashRoyaleApiClient
         /// </summary>
-        /// <param name="apiOptions">Instance of ApiOptions</param>
-        public static ClashRoyaleApiClient Create(ApiOptions apiOptions)
+        /// <param name="clashRoyaleApiOptions">Instance of ApiOptions</param>
+        public static ClashRoyaleApiClient Create(ClashRoyaleApiOptions clashRoyaleApiOptions)
         {
             var httpClient = new HttpClient(new SocketsHttpHandler
             {
                 PooledConnectionLifetime = TimeSpan.FromMinutes(2)
             });
-            return Create(apiOptions, httpClient);
+            return Create(clashRoyaleApiOptions, httpClient);
         }
 
         /// <summary>
         /// Creates an instance of ClashRoyaleApiClient
         /// </summary>
-        /// <param name="apiOptions">Instance of ApiOptions</param>
+        /// <param name="clashRoyaleApiOptions">Instance of ApiOptions</param>
         /// <param name="httpClientFactory">Instance of IHttpClientFactory</param>
-        public static ClashRoyaleApiClient Create(ApiOptions apiOptions, IHttpClientFactory httpClientFactory)
+        public static ClashRoyaleApiClient Create(ClashRoyaleApiOptions clashRoyaleApiOptions, IHttpClientFactory httpClientFactory)
         {
             ArgumentNullException.ThrowIfNull(httpClientFactory);
             var httpClient = httpClientFactory.CreateClient();
-            return Create(apiOptions, httpClient);
+            return Create(clashRoyaleApiOptions, httpClient);
         }
 
         /// <summary>
         /// Creates an instance of ClashRoyaleApiClient
         /// </summary>
-        /// <param name="apiOptions">Instance of ApiOptions</param>
+        /// <param name="clashRoyaleApiOptions">Instance of ApiOptions</param>
         /// <param name="httpClient">Instance of HttpClient</param>
-        public static ClashRoyaleApiClient Create(ApiOptions apiOptions, HttpClient httpClient)
-            => new(httpClient, apiOptions);
+        public static ClashRoyaleApiClient Create(ClashRoyaleApiOptions clashRoyaleApiOptions, HttpClient httpClient)
+            => new(httpClient, clashRoyaleApiOptions);
 
         /// <summary>
         /// Access card information

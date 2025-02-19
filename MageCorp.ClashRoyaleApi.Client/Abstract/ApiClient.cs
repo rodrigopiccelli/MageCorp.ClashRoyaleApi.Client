@@ -36,7 +36,7 @@ internal abstract class ApiClient
     public async Task<T?> GetAsync<T>(string requestUri, Dictionary<string, string?>? parameters)
         where T : IApiResponse
     {
-        using var diHttpClient = httpClientFactory?.CreateClient("ClashRoyaleApi");
+        using var diHttpClient = httpClientFactory?.CreateClient("ClashRoyaleApiClient");
         var httpClient = diHttpClient ?? localHttpClient;
 
         T? result = Activator.CreateInstance<T>();

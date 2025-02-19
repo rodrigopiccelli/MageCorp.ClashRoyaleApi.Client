@@ -37,8 +37,8 @@ public class ClashRoyaleApiClientIntegrationTests
         _tournamentName = configuration["ApiSettings:TournamentName"]!;
         _locationId = int.Parse(configuration["ApiSettings:LocationId"]!);
 
-        var apiOptions = new ApiOptions(_validBearerToken, useProxy: true);
-        _client = ClashRoyaleApiClient.Create(apiOptions);
+        var clashRoyaleApiOptions = new ClashRoyaleApiOptions(_validBearerToken, useProxy: true);
+        _client = ClashRoyaleApiClient.Create(clashRoyaleApiOptions);
     }
 
     [Fact]
