@@ -30,11 +30,11 @@ public static class ServiceCollectionExtensions
     /// Adds ClashRoyaleApiClient to the service collection using a function to configure <see cref="ClashRoyaleApiOptions"/>.
     /// </summary>
     /// <param name="services">The service collection.</param>
-    /// <param name="apiOptionsFactory">A function to configure the API options.</param>
+    /// <param name="clashRoyaleApiOptionsFactory">A function to configure the API options.</param>
     /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, Func<IServiceProvider, ClashRoyaleApiOptions> apiOptionsFactory)
+    public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, Func<IServiceProvider, ClashRoyaleApiOptions> clashRoyaleApiOptionsFactory)
     {
-        services.AddTransient(apiOptionsFactory);
+        services.AddTransient(clashRoyaleApiOptionsFactory);
         services.AddHttpClient("ClashRoyaleApiClient", (provider, httpClient) =>
         {
             var clashRoyaleApiOptions = provider.GetRequiredService<ClashRoyaleApiOptions>();
