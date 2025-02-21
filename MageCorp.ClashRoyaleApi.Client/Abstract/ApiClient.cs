@@ -30,16 +30,17 @@ internal abstract class ApiClient
         };
     }
 
-    public async Task<T> GetAsync<T>(string requestUri) where T : IApiResponse =>
-        await GetAsync<T>(requestUri, null);
+    public async Task<T> GetAsync<T>(string requestUri) 
+        where T : class, IApiResponse, new() =>
+            await GetAsync<T>(requestUri, null);
 
     public async Task<T> GetAsync<T>(string requestUri, Dictionary<string, string?>? parameters)
-        where T : IApiResponse
+        where T : class, IApiResponse, new()
     {
         using var diHttpClient = httpClientFactory?.CreateClient("ClashRoyaleApiClient");
         var httpClient = diHttpClient ?? localHttpClient;
 
-        T? result = Activator.CreateInstance<T>();
+        T? result = new();
 
         try
         {
@@ -52,16 +53,16 @@ internal abstract class ApiClient
                 var message = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 if (response.StatusCode == HttpStatusCode.OK)
-                    result = JsonSerializer.Deserialize<T>(message, jsonSerializerOptions);
+                    result = JsonSerializer.Deserialize<T>(message, jsonSerializerOptions) ?? new();
                 else if(message != string.Empty)
                     result.Error = JsonSerializer.Deserialize<ClientError>(message, jsonSerializerOptions);
 
-                result!.HttpStatusCode = response.StatusCode;
+                result.HttpStatusCode = response.StatusCode;
             }
         }
         catch (Exception ex)
         {
-            result!.Error = new ClientError { Message = ex.Message, Type = ex.GetType().Name, Detail = ex, Reason = ex.StackTrace };
+            result.Error = new ClientError { Message = ex.Message, Type = ex.GetType().Name, Detail = ex, Reason = ex.StackTrace };
         }
 
         return result;
