@@ -110,25 +110,21 @@ jobs:
     - name: Determine version
       id: gitversion
       run: |
-        dotnet-gitversion /output json /output buildserver
         echo "version=$(dotnet-gitversion | jq -r .MajorMinorPatch)" >> $GITHUB_ENV
     - name: Create GitHub Release
       id: create_release
-      uses: actions/create-release@v1.1.4
+      run: |
+        version=$(echo ${{ env.version }})
+        upload_url=$(gh release create $version --title "$version" --notes "${{ github.event.pull_request.body }}" --draft=false --prerelease=false --json upload_url --jq .upload_url)
+        echo "upload_url=$upload_url" >> $GITHUB_ENV
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ env.version }}
-        release_name: Release ${{ env.version }}
-        body: ${{ github.event.pull_request.body }}
-        draft: false
-        prerelease: false
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        upload_url: ${{ env.upload_url }}
         asset_path: ${{ env.NuGetDirectory }}/MageCorp.ClashRoyaleApi.Client.${{ env.version }}.nupkg
         asset_name: MageCorp.ClashRoyaleApi.Client.${{ env.version }}.nupkg
         asset_content_type: application/zip
