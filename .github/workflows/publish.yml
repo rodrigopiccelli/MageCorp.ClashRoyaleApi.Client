@@ -114,8 +114,7 @@ jobs:
     - name: Create GitHub Release
       id: create_release
       run: |
-        version=$(echo ${{ env.version }})
-        upload_url=$(gh release create $version --title "$version" --notes "${{ github.event.pull_request.body }}" --draft=false --prerelease=false --json upload_url --jq .upload_url)
+        upload_url=$(gh release create ${{ env.version }} --title "${{ env.version }}" --notes "${{ github.event.pull_request.body }}" --draft=false --prerelease=false --json upload_url --jq .upload_url)
         echo "upload_url=$upload_url" >> $GITHUB_ENV
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
