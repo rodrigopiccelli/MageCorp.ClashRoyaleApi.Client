@@ -100,6 +100,11 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '9.0.x'
+    - name: Install GitVersion
+      run: dotnet tool install --global GitVersion.Tool
+    - name: Determine version
+      id: gitversion
+      run: dotnet-gitversion /output json /output buildserver
     - name: Create GitHub Release
       id: create_release
       uses: actions/create-release@v1
