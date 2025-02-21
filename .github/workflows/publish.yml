@@ -39,7 +39,7 @@ jobs:
       id: gitversion
       run: |
         dotnet-gitversion /output json /output buildserver
-        echo "version=$(gitversion | jq -r .MajorMinorPatch)" >> $GITHUB_ENV
+        echo "version=$(dotnet-gitversion | jq -r .MajorMinorPatch)" >> $GITHUB_ENV
     - name: Build project
       run: dotnet build --configuration Release
     - name: Pack project
@@ -113,6 +113,7 @@ jobs:
       with:
         tag_name: ${{ env.version }}
         release_name: Release ${{ env.version }}
+        body: ${{ github.event.pull_request.body }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
