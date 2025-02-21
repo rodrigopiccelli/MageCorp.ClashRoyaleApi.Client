@@ -109,8 +109,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
-        release_name: Release v${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
+        tag_name: V${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
+        release_name: Release V${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
@@ -119,8 +119,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ env.NuGetDirectory }}/*.nupkg
-        asset_name: magecorp.clashroyaleapi.client.${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}.nupkg
+        asset_path: ${{ env.NuGetDirectory }}
+        asset_name: MageCorp.ClashRoyaleApi.Client.${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}.nupkg
         asset_content_type: application/zip
     - name: Publish NuGet package
       run: |
