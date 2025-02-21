@@ -12,7 +12,7 @@ public interface ITournamentsService
     /// </summary>
     /// <param name="tournamentTag">Tag of the tournament to retrieve</param>
     /// <returns></returns>
-    Task<Tournament?> GetTournamentAsync(string tournamentTag);
+    Task<Tournament> GetTournamentAsync(string tournamentTag);
 
     /// <summary>
     /// Search all tournaments by name.
@@ -22,5 +22,5 @@ public interface ITournamentsService
     /// <param name="after">Return only items that occur after this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <param name="before">Return only items that occur before this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <returns></returns>
-    Task<TournamentHeaderList?> SearchAsync(string? name, int? limit = null, string? after = null, string? before = null);
+    Task<TournamentHeaderList> SearchAsync(string? name, int? limit = null, string? after = null, string? before = null);
 }

@@ -10,10 +10,10 @@ internal class LeaderboardsService : ApiClient, ILeaderboardsService
 
     public LeaderboardsService(IHttpClientFactory httpClientFactory) : base(httpClientFactory) { }
 
-    public async Task<PlayerLeaderboardList?> GetLeaderboardAsync(long leaderboardId, int? limit = null, string? after = null, string? before = null) =>
+    public async Task<PlayerLeaderboardList> GetLeaderboardAsync(long leaderboardId, int? limit = null, string? after = null, string? before = null) =>
         await GetAsync<PlayerLeaderboardList>($"leaderboard/{HttpUtility.UrlEncode(leaderboardId.ToString())}",
             CreatePagingParameters(limit, after, before));
 
-    public async Task<LeaderboardList?> ListLeaderboardsAsync() => 
+    public async Task<LeaderboardList> ListLeaderboardsAsync() => 
         await GetAsync<LeaderboardList>("leaderboards");
 }

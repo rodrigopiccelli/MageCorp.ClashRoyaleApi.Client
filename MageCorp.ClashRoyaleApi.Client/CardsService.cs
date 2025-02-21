@@ -10,7 +10,7 @@ internal class CardsService : ApiClient, ICardsService
 
     public CardsService(IHttpClientFactory httpClientFactory) : base(httpClientFactory) { }
 
-    public async Task<CardList?> ListAsync(int? limit = null, string? after = null, string? before = null) => 
+    public async Task<CardList> ListAsync(int? limit = null, string? after = null, string? before = null) => 
         await GetAsync<CardList>($"cards",
             CreatePagingParameters(limit, after, before));
 }

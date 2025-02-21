@@ -30,10 +30,10 @@ internal abstract class ApiClient
         };
     }
 
-    public async Task<T?> GetAsync<T>(string requestUri) where T : IApiResponse =>
+    public async Task<T> GetAsync<T>(string requestUri) where T : IApiResponse =>
         await GetAsync<T>(requestUri, null);
 
-    public async Task<T?> GetAsync<T>(string requestUri, Dictionary<string, string?>? parameters)
+    public async Task<T> GetAsync<T>(string requestUri, Dictionary<string, string?>? parameters)
         where T : IApiResponse
     {
         using var diHttpClient = httpClientFactory?.CreateClient("ClashRoyaleApiClient");
@@ -58,14 +58,13 @@ internal abstract class ApiClient
 
                 result!.HttpStatusCode = response.StatusCode;
             }
-
-            return result;
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine(ex.Message);
-            throw;
+            result!.Error = new ClientError { Message = ex.Message, Type = ex.GetType().Name, Detail = ex, Reason = ex.StackTrace };
         }
+
+        return result;
     }
 
     protected static Dictionary<string, string?> CreatePagingParameters(int? limit, string? after, string? before) =>

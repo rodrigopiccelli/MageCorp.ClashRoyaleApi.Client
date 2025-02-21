@@ -10,5 +10,5 @@ public interface IGlobalTournamentsService
     /// Get list of global tournaments
     /// </summary>
     /// <returns></returns>
-    Task<LadderTournamentList?> ListGlobalTournamentsAsync();
+    Task<LadderTournamentList> ListGlobalTournamentsAsync();
 }

@@ -9,7 +9,7 @@ internal class FilesService : ApiClient, IFilesService
 
     public FilesService(IHttpClientFactory httpClientFactory) : base(httpClientFactory) { }
 
-    public async Task<Fingerprint?> GetFingerprintAsync() =>
+    public async Task<Fingerprint> GetFingerprintAsync() =>
         await GetAsync<Fingerprint>($"files/fingerprint");
 
 }

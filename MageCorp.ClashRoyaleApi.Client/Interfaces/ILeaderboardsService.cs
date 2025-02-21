@@ -10,7 +10,7 @@ public interface ILeaderboardsService
     /// List leaderboards for different trophy roads
     /// </summary>
     /// <returns></returns>
-    public Task<LeaderboardList?> ListLeaderboardsAsync();
+    public Task<LeaderboardList> ListLeaderboardsAsync();
 
     /// <summary>
     /// Get players on a specific leaderboard
@@ -20,5 +20,5 @@ public interface ILeaderboardsService
     /// <param name="after">Return only items that occur after this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <param name="before">Return only items that occur before this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <returns></returns>
-    public Task<PlayerLeaderboardList?> GetLeaderboardAsync(long leaderboardId, int? limit = null, string? after = null, string? before = null);
+    public Task<PlayerLeaderboardList> GetLeaderboardAsync(long leaderboardId, int? limit = null, string? after = null, string? before = null);
 }
