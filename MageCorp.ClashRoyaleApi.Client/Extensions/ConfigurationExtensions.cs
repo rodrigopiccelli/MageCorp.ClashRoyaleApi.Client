@@ -1,34 +1,26 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 
 namespace MageCorp.ClashRoyaleApi.Client.Extensions;
 
 /// <summary>
-/// 
+/// Provides extension methods for retrieving ClashRoyaleApiOptions from the configuration.
 /// </summary>
 public static class ConfigurationExtensions
 {
+    /// <summary>
+    /// Gets the ClashRoyaleApiOptions section
+    /// </summary>
+    /// <param name="configuration">The configuration instance.</param>
+    /// <returns>The ClashRoyaleApiOptions section.</returns>
+    public static ClashRoyaleApiOptions? GetClashRoyaleApiOptionsSection(this IConfiguration configuration)
+        => GetClashRoyaleApiOptionsSection(configuration, nameof(ClashRoyaleApiOptions));
 
     /// <summary>
-    /// Gets the ApiOptions section
+    /// Gets the named ClashRoyaleApiOptions section
     /// </summary>
-    /// <param name="configuration"></param>
-    /// <returns></returns>
-    public static ApiOptions GetApiOptionsSection(this IConfigurationRoot configuration)
-    {
-        return GetApiOptionsSection(configuration, typeof(ApiOptions).Name);
-    }
-
-    /// <summary>
-    /// Gets the named ApiOptions section
-    /// </summary>
-    /// <param name="configuration"></param>
-    /// <param name="sectionName">The ApiOptions section name</param>
-    /// <returns></returns>
-    public static ApiOptions GetApiOptionsSection(this IConfigurationRoot configuration, string sectionName)
-    {
-        var apiOptions = new ApiOptions();
-        new ConfigureFromConfigurationOptions<ApiOptions>(configuration.GetSection(sectionName)).Configure(apiOptions);
-        return apiOptions;
-    }
+    /// <param name="configuration">The configuration instance.</param>
+    /// <param name="sectionName">The ClashRoyaleApiOptions section name.</param>
+    /// <returns>The named ClashRoyaleApiOptions section.</returns>
+    public static ClashRoyaleApiOptions? GetClashRoyaleApiOptionsSection(this IConfiguration configuration, string sectionName)
+        => configuration.GetSection(sectionName).Get<ClashRoyaleApiOptions>();
 }

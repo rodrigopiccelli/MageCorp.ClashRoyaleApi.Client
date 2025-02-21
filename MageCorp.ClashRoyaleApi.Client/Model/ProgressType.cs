@@ -4,7 +4,7 @@ namespace MageCorp.ClashRoyaleApi.Client.Model;
 
 /// <summary>
 /// </summary>
-public class GoblinRoad
+public class ProgressType
 {
     /// <summary>
     /// </summary>

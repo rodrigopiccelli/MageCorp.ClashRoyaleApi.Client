@@ -10,5 +10,5 @@ public interface IFilesService
     /// Get version fingerprint of game files.
     /// </summary>
     /// <returns></returns>
-    Task<Fingerprint?> GetFingerprintAsync();
+    Task<Fingerprint> GetFingerprintAsync();
 }

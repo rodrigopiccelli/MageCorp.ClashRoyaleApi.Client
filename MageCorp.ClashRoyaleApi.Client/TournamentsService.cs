@@ -1,6 +1,5 @@
 ﻿using MageCorp.ClashRoyaleApi.Client.Model;
 using MageCorp.ClashRoyaleApi.Client.Interfaces;
-using System.Collections.Specialized;
 using MageCorp.ClashRoyaleApi.Client.Abstract;
 using System.Web;
 
@@ -12,10 +11,12 @@ internal class TournamentsService : ApiClient, ITournamentsService
 
     public TournamentsService(IHttpClientFactory httpClientFactory) : base(httpClientFactory) { }
 
-    public async Task<TournamentHeaderList?> SearchAsync(string? name, int? limit = null, string? after = null, string? before = null) =>
+    public async Task<TournamentHeaderList> SearchAsync(string? name, int? limit = null, string? after = null, string? before = null) =>
         await GetAsync<TournamentHeaderList>($"tournaments",
-            new NameValueCollection { { "name", name }, { "limit", limit?.ToString() }, { "after", after }, { "before", before } });
+            new Dictionary<string, string?> { { "name", name } }
+            .Concat(CreatePagingParameters(limit, after, before))
+            .ToDictionary(kvp => kvp.Key, kvp => kvp.Value));
 
-    public async Task<Tournament?> GetTournamentAsync(string tournamentTag) =>
+    public async Task<Tournament> GetTournamentAsync(string tournamentTag) =>
         await GetAsync<Tournament>($"tournaments/{HttpUtility.UrlEncode(tournamentTag)}");
 }

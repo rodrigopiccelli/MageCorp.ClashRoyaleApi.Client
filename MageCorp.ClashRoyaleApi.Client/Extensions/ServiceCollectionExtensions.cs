@@ -15,30 +15,30 @@ public static class ServiceCollectionExtensions
     /// <param name="apiKey">The Clash Royale API key.</param>
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, string apiKey) => 
-        services.AddClashRoyaleApiClient(new ApiOptions(apiKey));
+        services.AddClashRoyaleApiClient(new ClashRoyaleApiOptions(apiKey));
 
     /// <summary>
-    /// Adds ClashRoyaleApiClient to the service collection using <see cref="ApiOptions"/>.
+    /// Adds ClashRoyaleApiClient to the service collection using <see cref="ClashRoyaleApiOptions"/>.
     /// </summary>
     /// <param name="services">The service collection.</param>
-    /// <param name="apiOptions">The API options.</param>
+    /// <param name="clashRoyaleApiOptions">The Clash Royale API options.</param>
     /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, ApiOptions apiOptions) =>
-        services.AddClashRoyaleApiClient(_ => apiOptions);
+    public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, ClashRoyaleApiOptions clashRoyaleApiOptions) =>
+        services.AddClashRoyaleApiClient(_ => clashRoyaleApiOptions);
 
     /// <summary>
-    /// Adds ClashRoyaleApiClient to the service collection using a function to configure <see cref="ApiOptions"/>.
+    /// Adds ClashRoyaleApiClient to the service collection using a function to configure <see cref="ClashRoyaleApiOptions"/>.
     /// </summary>
     /// <param name="services">The service collection.</param>
-    /// <param name="apiOptionsFactory">A function to configure the API options.</param>
+    /// <param name="clashRoyaleApiOptionsFactory">A function to configure the API options.</param>
     /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, Func<IServiceProvider, ApiOptions> apiOptionsFactory)
+    public static IServiceCollection AddClashRoyaleApiClient(this IServiceCollection services, Func<IServiceProvider, ClashRoyaleApiOptions> clashRoyaleApiOptionsFactory)
     {
-        services.AddTransient(apiOptionsFactory);
-        services.AddHttpClient("ClashRoyaleApi", (provider, httpClient) =>
+        services.AddTransient(clashRoyaleApiOptionsFactory);
+        services.AddHttpClient("ClashRoyaleApiClient", (provider, httpClient) =>
         {
-            var apiOptions = provider.GetRequiredService<ApiOptions>();
-            httpClient.ConfigureApiOptions(apiOptions);
+            var clashRoyaleApiOptions = provider.GetRequiredService<ClashRoyaleApiOptions>();
+            httpClient.ConfigureClashRoyaleApiOptions(clashRoyaleApiOptions);
         });
 
         // Register all services related to ClashRoyaleApiClient

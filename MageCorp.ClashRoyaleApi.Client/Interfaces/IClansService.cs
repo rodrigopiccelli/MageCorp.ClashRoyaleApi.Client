@@ -15,7 +15,7 @@ public interface IClansService
     /// <param name="after">Return only items that occur after this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <param name="before">Return only items that occur before this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <returns></returns>
-    Task<ClanWarLog?> ListWarlogAsync(string clanTag, int? limit = null, string? after = null, string? before = null);
+    Task<ClanWarLog> ListWarlogAsync(string clanTag, int? limit = null, string? after = null, string? before = null);
     /// <summary>
     /// Search all clans by name and/or filtering the results using various criteria. At least one filtering criteria must be defined.
     /// </summary>
@@ -28,7 +28,7 @@ public interface IClansService
     /// <param name="after">Return only items that occur after this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <param name="before">Return only items that occur before this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <returns></returns>
-    Task<ClanList?> SearchAsync(string? name = null, int? locationId = null, int? minMembers = null, int? maxMambers = null, int? minScore = null, int? limit = null, string? after = null, string? before = null);
+    Task<ClanList> SearchAsync(string? name = null, int? locationId = null, int? minMembers = null, int? maxMambers = null, int? minScore = null, int? limit = null, string? after = null, string? before = null);
     /// <summary>
     /// Retrieve clan's river race log
     /// </summary>
@@ -37,19 +37,19 @@ public interface IClansService
     /// <param name="after">Return only items that occur after this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <param name="before">Return only items that occur before this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <returns></returns>
-    Task<RiverRaceLog?> ListRiverRaceLogAsync(string clanTag, int? limit = null, string? after = null, string? before = null);
+    Task<RiverRaceLog> ListRiverRaceLogAsync(string clanTag, int? limit = null, string? after = null, string? before = null);
     /// <summary>
     /// Retrieve information about clan's current clan war
     /// </summary>
     /// <param name="clanTag">Tag of the clan.</param>
     /// <returns></returns>
-    Task<CurrentClanWar?> GetCurrentWarAsync(string clanTag);
+    Task<CurrentClanWar> GetCurrentWarAsync(string clanTag);
     /// <summary>
     /// Get information about a single clan by clan tag. Clan tags can be found using clan search operation.
     /// </summary>
     /// <param name="clanTag">Tag of the clan.</param>
     /// <returns></returns>
-    Task<Clan?> GetAsync(string clanTag);
+    Task<Clan> GetAsync(string clanTag);
     /// <summary>
     /// List clan members.
     /// </summary>
@@ -58,11 +58,11 @@ public interface IClansService
     /// <param name="after">Return only items that occur after this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <param name="before">Return only items that occur before this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <returns></returns>
-    Task<ClanMemberList?> ListMembersAsync(string clanTag, int? limit = null, string? after = null, string? before = null);
+    Task<ClanMemberList> ListMembersAsync(string clanTag, int? limit = null, string? after = null, string? before = null);
     /// <summary>
     /// Retrieve information about clan's current river race
     /// </summary>
     /// <param name="clanTag">Tag of the clan.</param>
     /// <returns></returns>
-    Task<CurrentRiverRace?> GetCurrentRiverRaceAsync(string clanTag);
+    Task<CurrentRiverRace> GetCurrentRiverRaceAsync(string clanTag);
 }

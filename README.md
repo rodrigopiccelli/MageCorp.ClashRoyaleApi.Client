@@ -52,7 +52,7 @@ If you do not want to use any DI framework, you have to instantiate `ClashRoyale
 ##### Using Default HttpClient
 
 ```csharp
-ApiOptions apiOptions = new("<your token>");
+ClashRoyaleApiOptions apiOptions = new("<your token>");
 var clashRoyaleApiClient = ClashRoyaleApiClient.Create(apiOptions);
 var playersService = clashRoyaleApiClient.PlayersService;
 var clansService = clashRoyaleApiClient.ClansService;
@@ -61,7 +61,7 @@ var clansService = clashRoyaleApiClient.ClansService;
 ##### Using Custom HttpClient
 
 ```csharp
-ApiOptions apiOptions = new("<your token>");
+ClashRoyaleApiOptions apiOptions = new("<your token>");
 HttpClient httpClient = new HttpClient(new SocketsHttpHandler { // Custom configuration for HttpClient }); 
 var clashRoyaleApiClient = ClashRoyaleApiClient.Create(apiOptions, httpClient);
 var playersService = clashRoyaleApiClient.PlayersService;
@@ -71,7 +71,7 @@ var clansService = clashRoyaleApiClient.ClansService;
 ##### Using IHttpClientFactory
 
 ```csharp
-ApiOptions apiOptions = new("<your token>");
+ClashRoyaleApiOptions apiOptions = new("<your token>");
 IServiceCollection services = new ServiceCollection();
 services.AddHttpClient();
 IServiceProvider serviceProvider = services.BuildServiceProvider();
@@ -104,7 +104,7 @@ var serviceProvider = new ServiceCollection()
 Or
 ```csharp
 var serviceProvider = new ServiceCollection()
-    .AddClashRoyaleApiClient(new ApiOptions("<your token>"))
+    .AddClashRoyaleApiClient(new ClashRoyaleApiOptions("<your token>"))
     .BuildServiceProvider();
 ```
 Getting services:
@@ -122,11 +122,11 @@ var filesService = serviceProvider.GetRequiredService<IFilesService>();
 
 #### <a name="using-configuration"></a> Using Configuration
 
-There is an extension that supports `Microsoft.Extensions.Configuration` to store the `ApiOptions` configuration as follows
+There is an extension that supports `Microsoft.Extensions.Configuration` to store the `ClashRoyaleApiOptions` configuration as follows
 
 ```json
 {
-  "ApiOptions": {
+  "ClashRoyaleApiOptions": {
     "BearerToken": "<your token>",
     "ApiAddress": "https://api.clashroyale.com",
     "ApiVerstion": "v1",
@@ -147,7 +147,7 @@ var configuration = new ConfigurationBuilder()
 var serviceProvider = new ServiceCollection()
     .AddClashRoyaleApiClient(provider => {
         //you can use provider to get any required service needed to initialize your ApiOptions
-        return configuration.GetApiOptionsSection("<sectionName>"); //if you don't specify the sectionName it will be "ApiOptions" by default
+        return configuration.GetClashRoyaleApiOptionsSection("<sectionName>"); //if you don't specify the sectionName it will be "ClashRoyaleApiOptions" by default
     })
     .BuildServiceProvider();
 ```
