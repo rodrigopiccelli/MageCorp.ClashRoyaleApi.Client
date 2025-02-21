@@ -109,8 +109,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
-        release_name: Release ${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
+        tag_name: v${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
+        release_name: Release v${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
@@ -127,3 +127,5 @@ jobs:
         foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
             dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json
         }
+
+  
