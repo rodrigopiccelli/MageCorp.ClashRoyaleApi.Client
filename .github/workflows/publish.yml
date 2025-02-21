@@ -109,8 +109,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: V${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
-        release_name: Release V${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
+        tag_name: v${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
+        release_name: Release v${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
