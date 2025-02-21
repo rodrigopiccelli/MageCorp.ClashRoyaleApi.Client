@@ -37,7 +37,9 @@ jobs:
       run: dotnet tool install --global GitVersion.Tool
     - name: Determine version
       id: gitversion
-      run: dotnet-gitversion /output json /output buildserver
+      run: |
+        dotnet-gitversion /output json /output buildserver
+        echo "version=$(gitversion | jq -r .MajorMinorPatch)" >> $GITHUB_ENV
     - name: Build project
       run: dotnet build --configuration Release
     - name: Pack project
@@ -103,19 +105,14 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '9.0.x'
-    - name: Install GitVersion
-      run: dotnet tool install --global GitVersion.Tool
-    - name: Determine version
-      id: gitversion
-      run: dotnet-gitversion /output json /output buildserver
     - name: Create GitHub Release
       id: create_release
       uses: actions/create-release@v1.1.4
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
-        release_name: Release v${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
+        tag_name: ${{ env.version }}
+        release_name: Release ${{ env.version }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
@@ -124,8 +121,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ env.NuGetDirectory }}/MageCorp.ClashRoyaleApi.Client.${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}.nupkg
-        asset_name: MageCorp.ClashRoyaleApi.Client.${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}.nupkg
+        asset_path: ${{ env.NuGetDirectory }}/MageCorp.ClashRoyaleApi.Client.${{ env.version }}.nupkg
+        asset_name: MageCorp.ClashRoyaleApi.Client.${{ env.version }}.nupkg
         asset_content_type: application/zip
     - name: Publish NuGet package
       run: |
