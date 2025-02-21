@@ -1,7 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 # The previous line enables IntelliSense for this file.
 # See this post for more info https://www.meziantou.net/enabling-intellisense-for-github-actions-workflows-in-vs-code.htm
-
 name: publish
 on:
   pull_request:
