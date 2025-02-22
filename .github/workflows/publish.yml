@@ -111,10 +111,15 @@ jobs:
       id: gitversion
       run: |
         echo "version=$(dotnet-gitversion | jq -r .MajorMinorPatch)" >> $GITHUB_ENV
+    - name: Remove newlines from PR body
+      id: clean_body
+      run: |
+        cleaned_body=$(echo "${{ github.event.pull_request.body }}" | tr -d '\n')
+        echo "cleaned_body=$cleaned_body" >> $GITHUB_ENV
     - name: Create GitHub Release
       id: create_release
       run: |
-        upload_url=$(gh release create ${{ env.version }} --title "${{ env.version }}" --notes "${{ github.event.pull_request.body }}" --draft=false --prerelease=false --json upload_url --jq .upload_url)
+        upload_url=$(gh release create ${{ env.version }} --title "${{ env.version }}" --notes "${{ env.cleaned_body }}" --draft=false --prerelease=false --json upload_url --jq .upload_url)
         echo "upload_url=$upload_url" >> $GITHUB_ENV
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
