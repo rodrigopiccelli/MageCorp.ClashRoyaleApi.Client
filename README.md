@@ -1,9 +1,5 @@
-# MageCorp.ClashRoyaleApi.Client
+# <img src="https://raw.githubusercontent.com/rodrigopiccelli/MageCorp.ClashRoyaleApi.Client/master/icon.png" width="28" height="28" title="Package Logo"> MageCorp.ClashRoyaleApi.Client <a href="https://www.nuget.org/packages/MageCorp.ClashRoyaleApi.Client" align="right" target="_blank"><img alt="NuGet Version" src="https://img.shields.io/nuget/v/MageCorp.ClashRoyaleApi.Client?color=004880&style=for-the-badge" align="right" /></a>
 Client library (C# wrapper) written in .NET (9.0) that provides an easy way to interact with the official  [Clash Royale API](https://developer.clashroyale.com) directly or through proxy
-
-|                         | Stable                                                                                                                                  |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Clash Royale API Client | [![NuGet](https://img.shields.io/nuget/v/MageCorp.ClashRoyaleApi.Client.svg)](https://www.nuget.org/packages/MageCorp.ClashRoyaleApi.Client/) |
 
 ## Supported Platforms
 - .Net 9.0
@@ -20,15 +16,10 @@ Client library (C# wrapper) written in .NET (9.0) that provides an easy way to i
    - [Standalone Initialization](#standalone-initialization)
      - [Clash Royale Api](#clashroyaleapistandalone)
    - [Microsoft.Extensions.DependencyInjection Initialization](#di-initialization)
-     - [Clash Royale Api](#clash-royale-api)
      - [Using Configuration](#using-configuration)
 3. [License](#license)
 
 ## <a name="installation"></a> Installation
-
-|                                       | Logo                                                                                                                                                                              | Stable                                                                                                                                  | 
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | 
-| Clash Royale API Client               | <img src="https://raw.githubusercontent.com/rodrigopiccelli/MageCorp.ClashRoyaleApi.Client/master/icon.png" width="150" height="150" title="Github Logo"> | [![NuGet](https://img.shields.io/nuget/v/MageCorp.ClashRoyaleApi.Client.svg)](https://www.nuget.org/packages/MageCorp.ClashRoyaleApi.Client/) |
 
 Following commands can be used to install MageCorp.ClashRoyaleApi.Client, run the following command in the Package Manager Console
 
@@ -84,15 +75,7 @@ var clansService = clashRoyaleApiClient.ClansService;
 
 `clashRoyaleApiClient` contains all necessary clients.
 
-### <a name="di-initialization"></a> Microsoft.Extensions.DependencyInjection Initialization
-
-First, you need to install `Microsoft.Extensions.DependencyInjection` NuGet package as follows
-
-```
-dotnet add package Microsoft.Extensions.DependencyInjection
-```
-
-#### <a name="clash-royale-api"></a> Clash Royale Api
+## <a name="di-initialization"></a> Microsoft.Extensions.DependencyInjection Initialization
 
 Register necessary dependencies to `ServiceCollection` as follows
 
@@ -105,6 +88,15 @@ Or
 ```csharp
 var serviceProvider = new ServiceCollection()
     .AddClashRoyaleApiClient(new ClashRoyaleApiOptions("<your token>"))
+    .BuildServiceProvider();
+```
+Or
+```csharp
+var serviceProvider = new ServiceCollection()
+    .AddClashRoyaleApiClient(provider => {
+        //you can use provider to get any required service needed to initialize your ClashRoyaleApiOptions
+        return new ClashRoyaleApiOptions(...);
+    })
     .BuildServiceProvider();
 ```
 Getting services:
@@ -143,12 +135,12 @@ var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables()
     .Build();
+
+//if you don't specify the sectionName it will be "ClashRoyaleApiOptions" by default
+var clashRoyaleApiOptions = configuration.GetClashRoyaleApiOptionsSection("<sectionName>");
     
 var serviceProvider = new ServiceCollection()
-    .AddClashRoyaleApiClient(provider => {
-        //you can use provider to get any required service needed to initialize your ApiOptions
-        return configuration.GetClashRoyaleApiOptionsSection("<sectionName>"); //if you don't specify the sectionName it will be "ClashRoyaleApiOptions" by default
-    })
+    .AddClashRoyaleApiClient(clashRoyaleApiOptions)
     .BuildServiceProvider();
 ```
 
