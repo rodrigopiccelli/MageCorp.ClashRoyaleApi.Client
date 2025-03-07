@@ -16,4 +16,10 @@ internal class LeaderboardsService : ApiClient, ILeaderboardsService
 
     public async Task<LeaderboardList> ListLeaderboardsAsync() => 
         await GetAsync<LeaderboardList>("leaderboards");
+
+    public PlayerLeaderboardList GetLeaderboard(long leaderboardId, int? limit = null, string? after = null, string? before = null) =>
+        GetLeaderboardAsync(leaderboardId, limit, after, before).GetAwaiter().GetResult();
+
+    public LeaderboardList ListLeaderboards() =>
+        ListLeaderboardsAsync().GetAwaiter().GetResult();
 }

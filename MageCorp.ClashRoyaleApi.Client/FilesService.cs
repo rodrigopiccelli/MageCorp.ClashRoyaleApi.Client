@@ -12,4 +12,7 @@ internal class FilesService : ApiClient, IFilesService
     public async Task<Fingerprint> GetFingerprintAsync() =>
         await GetAsync<Fingerprint>($"files/fingerprint");
 
+    public Fingerprint GetFingerprint() =>
+        GetFingerprintAsync().GetAwaiter().GetResult();
+
 }

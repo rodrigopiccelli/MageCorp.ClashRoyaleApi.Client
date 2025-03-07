@@ -47,7 +47,40 @@ internal class LocationsService : ApiClient, ILocationsService
         await GetAsync<PlayerPathOfLegendRankingList>($"locations/global/pathoflegend/{seasonId}/rankings/players",
             CreatePagingParameters(limit, after, before));
 
-    public async Task<PlayerPathOfLegendRankingList> ListPlayerPathOfLegendRankings(int locationId, int? limit = null, string? after = null, string? before = null) =>
+    public async Task<PlayerPathOfLegendRankingList> ListPlayerPathOfLegendRankingsAsync(int locationId, int? limit = null, string? after = null, string? before = null) =>
         await GetAsync<PlayerPathOfLegendRankingList>("locations/{locationId}/pathoflegend/players",
             CreatePagingParameters(limit, after, before));
+
+    public ClanRankingList ListClanRankings(int locationId, int? limit = null, string? after = null, string? before = null) =>
+        ListClanRankingsAsync(locationId, limit, after, before).GetAwaiter().GetResult();
+
+    public PlayerRankingList ListPlayerRankings(int locationId, int? limit = null, string? after = null, string? before = null) =>
+        ListPlayerRankingsAsync(locationId, limit, after, before).GetAwaiter().GetResult();
+
+    public ClanRankingList ListClanWarRankings(int locationId, int? limit = null, string? after = null, string? before = null) =>
+        ListClanWarRankingsAsync(locationId, limit, after, before).GetAwaiter().GetResult();
+
+    public LeagueSeason GetLeagueSeason(string seasonId) =>
+        GetLeagueSeasonAsync(seasonId).GetAwaiter().GetResult();
+
+    public PlayerRankingList ListSeasonPlayerRankings(string seasonId, int? limit = null, string? after = null, string? before = null) =>
+        ListSeasonPlayerRankingsAsync(seasonId, limit, after, before).GetAwaiter().GetResult();
+
+    public LeagueSeasonList ListLeagueSeasons() =>
+        ListLeagueSeasonsAsync().GetAwaiter().GetResult();
+
+    public LocationList ListLocations(int? limit = null, string? after = null, string? before = null) =>
+        ListLocationsAsync(limit, after, before).GetAwaiter().GetResult();
+
+    public Location GetLocation(int locationId) =>
+        GetLocationAsync(locationId).GetAwaiter().GetResult();
+
+    public LadderTournamentRankingList ListLadderTournamentRankings(string tournamentTag, int? limit = null, string? after = null, string? before = null) =>
+        ListLadderTournamentRankingsAsync(tournamentTag, limit, after, before).GetAwaiter().GetResult();
+
+    public PlayerPathOfLegendRankingList ListPlayerPathOfLegendRankings(string seasonId, int? limit = null, string? after = null, string? before = null) =>
+        ListPlayerPathOfLegendRankingsAsync(seasonId, limit, after, before).GetAwaiter().GetResult();
+
+    public PlayerPathOfLegendRankingList ListPlayerPathOfLegendRankings(int locationId, int? limit = null, string? after = null, string? before = null) =>
+        ListPlayerPathOfLegendRankingsAsync(locationId, limit, after, before).GetAwaiter().GetResult();
 }

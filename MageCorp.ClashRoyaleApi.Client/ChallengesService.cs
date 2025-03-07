@@ -10,6 +10,9 @@ internal class ChallengesService : ApiClient, IChallengesService
 
     public ChallengesService(IHttpClientFactory httpClientFactory) : base(httpClientFactory) { }
 
-    public async Task<ChallengeChainsList> ListChallengesAsync() => 
+    public async Task<ChallengeChainsList> ListChallengesAsync() =>
         await GetAsync<ChallengeChainsList>($"challenges");
+
+    public ChallengeChainsList ListChallenges() =>
+        ListChallengesAsync().GetAwaiter().GetResult();
 }

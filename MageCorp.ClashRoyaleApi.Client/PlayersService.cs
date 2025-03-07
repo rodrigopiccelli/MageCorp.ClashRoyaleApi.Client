@@ -19,4 +19,13 @@ internal class PlayersService : ApiClient, IPlayersService
 
     public async Task<BattleList> ListBatlleLogAsync(string playerTag) => 
         await GetAsync<BattleList>($"players/{HttpUtility.UrlEncode(playerTag)}/battlelog");
+
+    public Player GetPlayer(string playerTag) =>
+        GetPlayerAsync(playerTag).GetAwaiter().GetResult();
+
+    public UpcomingChests GetUpcomingChests(string playerTag) =>
+        GetUpcomingChestsAsync(playerTag).GetAwaiter().GetResult();
+
+    public BattleList ListBatlleLog(string playerTag) =>
+        ListBatlleLogAsync(playerTag).GetAwaiter().GetResult();
 }

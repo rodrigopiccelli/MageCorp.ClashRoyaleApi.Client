@@ -12,4 +12,7 @@ internal class GlobalTournamentsService : ApiClient, IGlobalTournamentsService
 
     public async Task<LadderTournamentList> ListGlobalTournamentsAsync() =>
         await GetAsync<LadderTournamentList>($"globaltournaments");
+
+    public LadderTournamentList ListGlobalTournaments() =>
+        ListGlobalTournamentsAsync().GetAwaiter().GetResult();
 }

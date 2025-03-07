@@ -346,7 +346,7 @@ public class ClashRoyaleApiClientIntegrationTests
     public async Task LocationsService_ListPlayerPathOfLegendRankings_ShouldReturnPlayerPathOfLegendRankings()
     {
         // Act
-        var playerPathOfLegendRankings = await _client.LocationsService.ListPlayerPathOfLegendRankings(_locationId);
+        var playerPathOfLegendRankings = await _client.LocationsService.ListPlayerPathOfLegendRankingsAsync(_locationId);
 
         // Assert
         Assert.NotNull(playerPathOfLegendRankings);
@@ -361,6 +361,17 @@ public class ClashRoyaleApiClientIntegrationTests
         // Assert
         Assert.NotNull(player);
         Assert.Equal(_playerTag, player.Tag);
+    }
+
+    [Fact]
+    public async Task PlayerService_GetPlayerAsync_ShouldFail()
+    {
+        // Act
+        var player = await _client.PlayersService.GetPlayerAsync("invalid");
+        // Assert
+        Assert.NotNull(player);
+        Assert.NotNull(player.Error);
+        Assert.Equal("notFound", player.Error!.Reason);
     }
 
     [Fact]
