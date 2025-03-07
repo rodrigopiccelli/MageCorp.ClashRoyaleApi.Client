@@ -12,4 +12,10 @@ public interface IChallengesService
     /// </summary>
     /// <returns></returns>
     Task<ChallengeChainsList> ListChallengesAsync();
+
+    /// <summary>
+    /// Get current and upcoming challenges.
+    /// </summary>
+    /// <returns></returns>
+    ChallengeChainsList ListChallenges();
 }

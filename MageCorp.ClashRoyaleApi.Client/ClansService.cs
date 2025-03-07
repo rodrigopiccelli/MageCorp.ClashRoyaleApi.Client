@@ -51,5 +51,32 @@ internal class ClansService : ApiClient, IClansService
     public async Task<CurrentRiverRace> GetCurrentRiverRaceAsync(string clanTag) =>
         await GetAsync<CurrentRiverRace>($"clans/{HttpUtility.UrlEncode(clanTag)}/currentriverrace");
 
+    public ClanWarLog ListWarlog(string clanTag, int? limit = null, string? after = null, string? before = null) =>
+        ListWarlogAsync(clanTag, limit, after, before).GetAwaiter().GetResult();
 
+    public ClanList Search(
+        string? name = null,
+        int? locationId = null,
+        int? minMembers = null,
+        int? maxMambers = null,
+        int? minScore = null,
+        int? limit = null,
+        string? after = null,
+        string? before = null) =>
+            SearchAsync(name, locationId, minMembers, maxMambers, minScore, limit, after, before).GetAwaiter().GetResult();
+
+    public RiverRaceLog ListRiverRaceLog(string clanTag, int? limit = null, string? after = null, string? before = null) =>
+        ListRiverRaceLogAsync(clanTag, limit, after, before).GetAwaiter().GetResult();
+
+    public CurrentClanWar GetCurrentWar(string clanTag) =>
+        GetCurrentWarAsync(clanTag).GetAwaiter().GetResult();
+
+    public Clan Get(string clanTag) =>
+        GetAsync(clanTag).GetAwaiter().GetResult();
+
+    public ClanMemberList ListMembers(string clanTag, int? limit = null, string? after = null, string? before = null) =>
+        ListMembersAsync(clanTag, limit, after, before).GetAwaiter().GetResult();
+
+    public CurrentRiverRace GetCurrentRiverRace(string clanTag) =>
+        GetCurrentRiverRaceAsync(clanTag).GetAwaiter().GetResult();
 }

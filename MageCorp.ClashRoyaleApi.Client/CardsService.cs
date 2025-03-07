@@ -13,4 +13,7 @@ internal class CardsService : ApiClient, ICardsService
     public async Task<CardList> ListAsync(int? limit = null, string? after = null, string? before = null) => 
         await GetAsync<CardList>($"cards",
             CreatePagingParameters(limit, after, before));
+
+    public CardList List(int? limit = null, string? after = null, string? before = null) =>
+        ListAsync(limit, after, before).GetAwaiter().GetResult();
 }
