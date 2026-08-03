@@ -15,8 +15,8 @@ namespace MageCorp.ClashRoyaleApi.Client
             httpClient.ConfigureClashRoyaleApiOptions(clashRoyaleApiOptions);
 
             CardsService = new CardsService(httpClient);
-            ChallengesService = new ChallengesService(httpClient);
             ClansService = new ClansService(httpClient);
+            EventsService = new EventsService(httpClient);
             GlobalTournamentsService = new GlobalTournamentsService(httpClient);
             LocationsService = new LocationsService(httpClient);
             PlayersService = new PlayersService(httpClient);
@@ -63,13 +63,13 @@ namespace MageCorp.ClashRoyaleApi.Client
         /// </summary>
         public ICardsService CardsService { get; }
         /// <summary>
-        /// Access challenge information
-        /// </summary>
-        public IChallengesService ChallengesService { get; }
-        /// <summary>
         /// Access clan specific information
         /// </summary>
         public IClansService ClansService { get; }
+        /// <summary>
+        /// Access current events information
+        /// </summary>
+        public IEventsService EventsService { get; }
         /// <summary>
         /// Access global tournaments information
         /// </summary>

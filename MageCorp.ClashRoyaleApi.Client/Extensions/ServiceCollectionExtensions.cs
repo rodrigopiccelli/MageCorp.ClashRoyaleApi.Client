@@ -55,8 +55,8 @@ public static class ServiceCollectionExtensions
     {
         services.AddTransient<IClansService, ClansService>()
                 .AddTransient<ICardsService, CardsService>()
-                .AddTransient<IChallengesService, ChallengesService>()
                 .AddTransient<IGlobalTournamentsService, GlobalTournamentsService>()
+                .AddTransient<IEventsService, EventsService>()
                 .AddTransient<ILocationsService, LocationsService>()
                 .AddTransient<IPlayersService, PlayersService>()
                 .AddTransient<ITournamentsService, TournamentsService>()

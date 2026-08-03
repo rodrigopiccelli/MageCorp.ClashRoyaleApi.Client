@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: ci
+
+on:
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  DOTNET_NOLOGO: true
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      with:
+        fetch-depth: 0
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68  # v6.0.0
+      with:
+        dotnet-version: |
+          10.0.x
+          9.0.x
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Run tests (net9.0)
+      env:
+        ApiSettings__ValidBearerToken: ${{ secrets.INTEGRATION_API_TOKEN }}
+      run: dotnet test --configuration Release --framework net9.0 --no-build
+
+    - name: Run tests (net10.0)
+      env:
+        ApiSettings__ValidBearerToken: ${{ secrets.INTEGRATION_API_TOKEN }}
+      run: dotnet test --configuration Release --framework net10.0 --no-build
