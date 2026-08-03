@@ -23,6 +23,8 @@
     <AssemblyOriginatorKeyFile>ClashRoyaleApiClient.snk</AssemblyOriginatorKeyFile>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <RepositoryUrl>https://github.com/rodrigopiccelli/MageCorp.ClashRoyaleApi.Client</RepositoryUrl>

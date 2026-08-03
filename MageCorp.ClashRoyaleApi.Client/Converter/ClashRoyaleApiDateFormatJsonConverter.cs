@@ -17,7 +17,7 @@ internal class ClashRoyaleApiDateFormatJsonConverter : JsonConverter<DateTime?>
         if(reader.TokenType == JsonTokenType.Null)
             return null;
         
-        return DateTime.ParseExact(reader.GetString()!, "yyyyMMddTHHmmss.fffZ", CultureInfo.InvariantCulture);
+        return DateTime.ParseExact(reader.GetString() ?? string.Empty, "yyyyMMddTHHmmss.fffZ", CultureInfo.InvariantCulture);
     }
 
 
