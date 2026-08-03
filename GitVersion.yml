@@ -1,10 +1,30 @@
 mode: ContinuousDeployment
+next-version: 3.0.0
 branches:
   master:
+    regex: ^master$
     increment: Patch
+    label: ''
+    is-main-branch: true
     tracks-release-branches: false
-    regex: master
-    source-branches: [feature, hotfix, release]
+  feature:
+    regex: ^features?[/-]
+    label: alpha
+    increment: Inherit
+    source-branches: [master]
+  hotfix:
+    regex: ^hotfix(es)?[/-]
+    label: hotfix
+    increment: Patch
+    source-branches: [master]
+  release:
+    regex: ^releases?[/-]
+    label: rc
+    increment: Patch
+    source-branches: [master]
+  unknown:
+    label: ci
+    increment: Inherit
 ignore:
   sha: []
 merge-message-formats: {}

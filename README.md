@@ -1,8 +1,9 @@
 # <img src="https://raw.githubusercontent.com/rodrigopiccelli/MageCorp.ClashRoyaleApi.Client/master/icon.png" width="28" height="28" title="Package Logo"> MageCorp.ClashRoyaleApi.Client <a href="https://www.nuget.org/packages/MageCorp.ClashRoyaleApi.Client" align="right" target="_blank"><img alt="NuGet Version" src="https://img.shields.io/nuget/v/MageCorp.ClashRoyaleApi.Client?color=004880&style=for-the-badge" align="right" /></a>
-Client library (C# wrapper) written in .NET (9.0) that provides an easy way to interact with the official  [Clash Royale API](https://developer.clashroyale.com) directly or through proxy
+Client library (C# wrapper) written in .NET (9.0 and 10.0) that provides an easy way to interact with the official [Clash Royale API](https://developer.clashroyale.com) directly or through proxy
 
 ## Supported Platforms
-- .Net 9.0
+- .NET 9.0
+- .NET 10.0
 
 ## Features
 
@@ -17,7 +18,10 @@ Client library (C# wrapper) written in .NET (9.0) that provides an easy way to i
      - [Clash Royale Api](#clashroyaleapistandalone)
    - [Microsoft.Extensions.DependencyInjection Initialization](#di-initialization)
      - [Using Configuration](#using-configuration)
-3. [License](#license)
+3. [Integration Tests](#integration-tests)
+   - [How to Configure](#integration-tests-configuration)
+   - [How to Run](#integration-tests-run)
+4. [License](#license)
 
 ## <a name="installation"></a> Installation
 
@@ -66,7 +70,7 @@ ClashRoyaleApiOptions apiOptions = new("<your token>");
 IServiceCollection services = new ServiceCollection();
 services.AddHttpClient();
 IServiceProvider serviceProvider = services.BuildServiceProvider();
-IHttpClientFactory httpClientFactory = serviceProvider.GetRequiredService();
+IHttpClientFactory httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
 var clashRoyaleApiClient = ClashRoyaleApiClient.Create(apiOptions, httpClientFactory);
 var playersService = clashRoyaleApiClient.PlayersService;
 var clansService = clashRoyaleApiClient.ClansService;
@@ -102,8 +106,8 @@ var serviceProvider = new ServiceCollection()
 Getting services:
 ```csharp
 var cardsService = serviceProvider.GetRequiredService<ICardsService>();
-var challengesService = serviceProvider.GetRequiredService<IChallengesService>();
 var clansService = serviceProvider.GetRequiredService<IClansService>();
+var eventsService = serviceProvider.GetRequiredService<IEventsService>();
 var globalTournamentsService = serviceProvider.GetRequiredService<IGlobalTournamentsService>();
 var locationsService = serviceProvider.GetRequiredService<ILocationsService>();
 var playersService = serviceProvider.GetRequiredService<IPlayersService>();
@@ -121,7 +125,7 @@ There is an extension that supports `Microsoft.Extensions.Configuration` to stor
   "ClashRoyaleApiOptions": {
     "BearerToken": "<your token>",
     "ApiAddress": "https://api.clashroyale.com",
-    "ApiVerstion": "v1",
+    "ApiVersion": "v1",
     "UseProxy": false,
     "ProxyAddress": "https://proxy.royaleapi.dev"
   }
@@ -144,6 +148,60 @@ var serviceProvider = new ServiceCollection()
     .BuildServiceProvider();
 ```
 
+
+
+
+## <a name="integration-tests"></a> Integration Tests
+
+Integration tests are organized by service, with one file per client (for example, `CardsServiceIntegrationTests`, `ClansServiceIntegrationTests`, and `LocationsServiceIntegrationTests`).
+
+### <a name="integration-tests-configuration"></a> How to Configure
+
+Tests load configuration from:
+
+1. `appsettings.json`
+2. `appsettings.local.json`
+3. Environment variables
+
+The `appsettings.local.json` file is intended for local secrets and should override placeholders from `appsettings.json`.
+
+Use this structure:
+
+```json
+{
+  "ApiSettings": {
+    "ValidBearerToken": "YOUR_VALID_BEARER_TOKEN",
+    "ClanTag": "#Y98VGGQY",
+    "PlayerTag": "#UJQQLJQ9V",
+    "ClanName": "Tenebrosos",
+    "TournamentName": "clash",
+    "LocationId": 57000038
+  }
+}
+```
+
+You can also use environment variables (double underscore for nested keys):
+
+- `ApiSettings__ValidBearerToken`
+- `ApiSettings__ClanTag`
+- `ApiSettings__PlayerTag`
+- `ApiSettings__ClanName`
+- `ApiSettings__TournamentName`
+- `ApiSettings__LocationId`
+
+### <a name="integration-tests-run"></a> How to Run
+
+Run all tests:
+
+```powershell
+dotnet test
+```
+
+Run only integration tests from one service file (example):
+
+```powershell
+dotnet test --filter "FullyQualifiedName~LocationsServiceIntegrationTests"
+```
 
 
 ## <a name="license"></a> License

@@ -9,8 +9,7 @@ on:
     branches:
       - 'master'
 
-permissions:
-  contents: write
+permissions: {}
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
@@ -22,120 +21,98 @@ defaults:
     shell: pwsh
 
 jobs:
-  create_nuget:
+  release:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0    
-    - name: Setup dotnet
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '9.0.x'
-    - name: Install GitVersion
-      run: dotnet tool install --global GitVersion.Tool
-    - name: Determine version
-      id: gitversion
-      run: |
-        dotnet-gitversion /output json /output buildserver
-        echo "version=$(dotnet-gitversion | jq -r .MajorMinorPatch)" >> $GITHUB_ENV
-    - name: Build project
-      run: dotnet build --configuration Release
-    - name: Pack project
-      run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }} /p:PackageVersion=${{ steps.gitversion.outputs['GitVersion.MajorMinorPatch'] }}
-    - uses: actions/upload-artifact@v4
-      with:
-        name: nuget
-        if-no-files-found: error
-        retention-days: 7
-        path: ${{ env.NuGetDirectory }}/*.nupkg
-
-  validate_nuget:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    needs: [ create_nuget ]
-    steps:
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0.x'
-      - uses: actions/download-artifact@v4
-        with:
-          name: nuget
-          path: ${{ env.NuGetDirectory }}
-
-      - name: Install nuget validator
-        run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
-
-      # Validate the NuGet package: https://www.nuget.org/packages/Meziantou.Framework.NuGetPackageValidation.Tool#readme-body-tab
-      # If some rules are not applicable, you can disable them using the --excluded-rules or --excluded-rule-ids option
-      - name: Validate package
-        run: meziantou.validate-nuget-package (Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg")
-
-  run_test:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     env:
       ApiSettings__ValidBearerToken: ${{ secrets.INTEGRATION_API_TOKEN }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
       with:
         fetch-depth: 0
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '9.0.x'
-    - name: Run tests
-      run: dotnet test --configuration Release -e ApiSettings__ValidBearerToken="${{ secrets.INTEGRATION_API_TOKEN }}"
 
-  deploy:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    needs: [ validate_nuget, run_test ]
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - uses: actions/download-artifact@v4
-      with:
-        name: nuget
-        path: ${{ env.NuGetDirectory }}
     - name: Setup dotnet
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68  # v6.0.0
       with:
-        dotnet-version: '9.0.x'
+        dotnet-version: |
+          10.0.x
+          9.0.x
+
     - name: Install GitVersion
-      run: dotnet tool install --global GitVersion.Tool
-    - name: Determine version
+      run: dotnet tool update --global GitVersion.Tool --version 6.*
+
+    - name: Determine package version
       id: gitversion
       run: |
-        echo "version=$(dotnet-gitversion | jq -r .MajorMinorPatch)" >> $GITHUB_ENV
-    - name: Remove newlines from PR body
-      id: clean_body
-      run: |
-        cleaned_body=$(echo "${{ github.event.pull_request.body }}" | tr -d '\n')
-        echo "cleaned_body=$cleaned_body" >> $GITHUB_ENV
-    - name: Create GitHub Release
-      id: create_release
-      run: |
-        upload_url=$(gh release create ${{ env.version }} --title "${{ env.version }}" --notes "${{ env.cleaned_body }}" --draft=false --prerelease=false --json upload_url --jq .upload_url)
-        echo "upload_url=$upload_url" >> $GITHUB_ENV
+        $gitVersion = dotnet-gitversion | ConvertFrom-Json
+        $version = $gitVersion.MajorMinorPatch
+        "package_version=$version" >> $env:GITHUB_OUTPUT
+        "package_version=$version" >> $env:GITHUB_ENV
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Run tests (net9.0)
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
+        ApiSettings__ValidBearerToken: ${{ secrets.INTEGRATION_API_TOKEN }}
+      run: dotnet test --configuration Release --framework net9.0 --no-build
+
+    - name: Run tests (net10.0)
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ env.upload_url }}
-        asset_path: ${{ env.NuGetDirectory }}/MageCorp.ClashRoyaleApi.Client.${{ env.version }}.nupkg
-        asset_name: MageCorp.ClashRoyaleApi.Client.${{ env.version }}.nupkg
-        asset_content_type: application/zip
-    - name: Publish NuGet package
+        ApiSettings__ValidBearerToken: ${{ secrets.INTEGRATION_API_TOKEN }}
+      run: dotnet test --configuration Release --framework net10.0 --no-build
+
+    - name: Pack
+      env:
+        PACKAGE_VERSION: ${{ steps.gitversion.outputs.package_version }}
+      run: dotnet pack MageCorp.ClashRoyaleApi.Client/MageCorp.ClashRoyaleApi.Client.csproj --configuration Release --no-build --output ${{ env.NuGetDirectory }} /p:PackageVersion=$env:PACKAGE_VERSION
+
+    - name: Validate package version is new
+      env:
+        PACKAGE_VERSION: ${{ steps.gitversion.outputs.package_version }}
       run: |
-        foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
-            dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json
+        $packageId = "MageCorp.ClashRoyaleApi.Client"
+        $version = $env:PACKAGE_VERSION
+        $indexUrl = "https://api.nuget.org/v3-flatcontainer/$($packageId.ToLower())/index.json"
+        $response = Invoke-RestMethod -Uri $indexUrl
+        if ($response.versions -contains $version) {
+          throw "Version '$version' already exists on NuGet for package '$packageId'."
         }
+
+    - name: Install NuGet validator
+      run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
+
+    - name: Validate package
+      run: |
+        $package = Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg" | Where-Object { $_.Name -notlike "*.snupkg" }
+        meziantou.validate-nuget-package $package
+
+    - name: NuGet login (OIDC -> temp API key)
+      id: nuget_login
+      uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841  # v1.2.0
+      with:
+        user: ${{ github.repository_owner }}
+
+    - name: Publish NuGet package
+      env:
+        NUGET_API_KEY: ${{ steps.nuget_login.outputs.NUGET_API_KEY }}
+      run: |
+        foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg" | Where-Object { $_.Name -notlike "*.snupkg" })) {
+          dotnet nuget push $file --api-key "$env:NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols
+        }
+
+    - name: Create GitHub release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PACKAGE_VERSION: ${{ steps.gitversion.outputs.package_version }}
+      run: |
+        $package = "${{ env.NuGetDirectory }}/MageCorp.ClashRoyaleApi.Client.$env:PACKAGE_VERSION.nupkg"
+        gh release create "$env:PACKAGE_VERSION" "$package" --title "$env:PACKAGE_VERSION" --generate-notes
 
   
