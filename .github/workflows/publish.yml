@@ -22,7 +22,7 @@ defaults:
 
 jobs:
   release:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true && !contains(github.event.pull_request.labels.*.name, 'skip-publish')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -104,7 +104,7 @@ jobs:
         NUGET_API_KEY: ${{ steps.nuget_login.outputs.NUGET_API_KEY }}
       run: |
         foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg" | Where-Object { $_.Name -notlike "*.snupkg" })) {
-          dotnet nuget push $file --api-key "$env:NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push $file --api-key "$env:NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols
         }
 
     - name: Create GitHub release
