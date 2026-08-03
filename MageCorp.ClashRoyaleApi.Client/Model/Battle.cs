@@ -85,6 +85,18 @@ public class Battle
     /// </summary>
     [JsonInclude]
     public bool IsHostedMatch { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public int LeagueNumber { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public string? EventTag { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public PlayerBattleAugmentList? Modifiers { get; internal set; }
 }
 
 

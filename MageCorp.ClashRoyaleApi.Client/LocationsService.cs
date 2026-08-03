@@ -48,7 +48,7 @@ internal class LocationsService : ApiClient, ILocationsService
             CreatePagingParameters(limit, after, before));
 
     public async Task<PlayerPathOfLegendRankingList> ListPlayerPathOfLegendRankingsAsync(int locationId, int? limit = null, string? after = null, string? before = null) =>
-        await GetAsync<PlayerPathOfLegendRankingList>("locations/{locationId}/pathoflegend/players",
+        await GetAsync<PlayerPathOfLegendRankingList>($"locations/{locationId}/pathoflegend/players",
             CreatePagingParameters(limit, after, before));
 
     public ClanRankingList ListClanRankings(int locationId, int? limit = null, string? after = null, string? before = null) =>
@@ -83,4 +83,10 @@ internal class LocationsService : ApiClient, ILocationsService
 
     public PlayerPathOfLegendRankingList ListPlayerPathOfLegendRankings(int locationId, int? limit = null, string? after = null, string? before = null) =>
         ListPlayerPathOfLegendRankingsAsync(locationId, limit, after, before).GetAwaiter().GetResult();
+
+    public async Task<LeagueSeasonList> ListLeagueSeasonsV2Async() =>
+        await GetAsync<LeagueSeasonList>("locations/global/seasonsV2");
+
+    public LeagueSeasonList ListLeagueSeasonsV2() =>
+        ListLeagueSeasonsV2Async().GetAwaiter().GetResult();
 }

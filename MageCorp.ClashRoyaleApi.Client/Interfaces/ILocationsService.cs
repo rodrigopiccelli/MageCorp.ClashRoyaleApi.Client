@@ -185,4 +185,14 @@ public interface ILocationsService
     /// <param name="before">Return only items that occur before this marker. Before marker can be found from the response, inside the 'paging' property. Note that only after or before can be specified for a request, not both.</param>
     /// <returns></returns>
     LadderTournamentRankingList ListLadderTournamentRankings(string tournamentTag, int? limit = null, string? after = null, string? before = null);
+    /// <summary>
+    /// Lists league seasons with more details (unique season IDs and season end times).
+    /// </summary>
+    /// <returns></returns>
+    Task<LeagueSeasonList> ListLeagueSeasonsV2Async();
+    /// <summary>
+    /// Lists league seasons with more details (unique season IDs and season end times).
+    /// </summary>
+    /// <returns></returns>
+    LeagueSeasonList ListLeagueSeasonsV2();
 }

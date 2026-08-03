@@ -156,4 +156,12 @@ public class Player : ApiResponse
     /// </summary>
     [JsonInclude]
     public int TotalExpPoints { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public int CollectionLevel { get; internal set; }
+    /// <summary>
+    /// </summary>
+    [JsonInclude]
+    public int CurrentWinLoseStreak { get; internal set; }
 }

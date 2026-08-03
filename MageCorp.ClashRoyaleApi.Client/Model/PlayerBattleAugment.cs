@@ -1,17 +1,17 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace MageCorp.ClashRoyaleApi.Client.Model;
 
 /// <summary>
 /// </summary>
-public class ChallengeGameMode
+public class PlayerBattleAugment
 {
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public int Id { get; internal set; }
+    public string? Tag { get; internal set; }
     /// <summary>
     /// </summary>
     [JsonInclude]
-    public string? Name { get; internal set; }
+    public List<string>? Modifiers { get; internal set; }
 }
